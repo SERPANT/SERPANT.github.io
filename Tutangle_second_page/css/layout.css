@@ -1,0 +1,137 @@
+header{
+    width:100%;
+    background: #7dd9e8;
+}
+
+.white_line{
+    background: #f5f5f5;
+    width: 100%
+}
+
+
+footer{
+    width:100%;
+    background: gray;
+    height: 45px;
+    
+}
+
+
+.main-body{
+    width:100%;
+ 
+  
+}
+
+.container{
+  
+    width: 1000px;
+
+    margin:0 auto;
+}
+
+.inner-container{
+  
+    width: 939px;
+
+    margin:0 auto;
+}
+
+.inner-container2{
+  
+    width: 939px;
+    
+    margin:0 auto;
+    margin-top: 33px;
+    background-image: url(../images/main_background.jpg)
+}
+
+.icon_search{
+ 
+    width: 939px;
+
+}
+
+
+.nav-bar{
+    background: #f5f5f5;
+    width: 939px;
+   
+}
+
+
+.icon_search_left{
+    
+    width: 584px;
+   
+    float: left;
+}
+
+.left_layout{
+    
+    
+    float: left;
+    width: 723px;
+}
+
+
+.right_layout{
+
+
+    float:right;
+    width:176px;
+}
+
+.profile{
+    width:651px;
+
+
+   
+}
+
+
+.image_link{
+    
+   
+    float: left;
+    width: 124px;
+
+}
+
+.topic_box_detail{
+   
+   
+    float: right;
+    width: 501px;
+}
+
+.fav_list{
+    
+    width: 723px;
+    
+    padding-top: 17px;
+    padding-bottom: 37px;
+  
+}
+
+.fav_list_inner{
+   
+   width: 723px;
+   background: honeydew;
+
+}
+
+.fav_list_item{
+    padding-top: 10px;
+}
+
+.fav_list_item_inner{
+    width: 150px;
+    padding-top: 11px;
+    padding-bottom: 27px;
+    
+}
+
+.fav_list_extra{
+    margin-left: 35px;
+}

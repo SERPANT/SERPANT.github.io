@@ -1,0 +1,28 @@
+*{
+margin:0px;
+padding: 0px;
+
+}
+
+.clearfix {
+    overflow: auto;
+}
+
+
+body{
+    font-family: 'Arial', sans-serif;
+    color: #30322f;
+    
+}
+
+a{
+    text-decoration: none;
+}
+img{
+padding:0px;
+margin:0px;
+}
+
+
+
+

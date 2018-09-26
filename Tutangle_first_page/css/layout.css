@@ -1,0 +1,120 @@
+.main-container{
+width:100%;
+}
+
+header{
+    background: #7dd9e8;
+    width: 100%;
+
+}
+
+.inner-container-add{
+  
+    width: 93.9%;
+
+    margin:0 auto;
+}
+
+.icon_search-add{
+ 
+    width: 100%;
+
+}
+
+.icon_search_left-add{
+    
+    width: 62.19382322%;
+   
+   
+    float: left;
+}
+
+.container-add{
+  
+    width: 62.5em;
+
+    margin:0 auto;
+}
+
+.main-body{
+    width: 100%;
+  
+    margin-top: 25px;
+}
+
+footer{
+    background: #727272;
+    width: 100%;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    margin-top:24px;
+    
+}
+
+.white_line{
+    background: #f5f5f5;
+    width: 100%
+}
+
+
+
+
+.header_nav_bar{
+    background:#f5f5f5;
+    
+    width: 100%;
+    margin: 0 auto;
+}
+
+.container{
+    width:58.6875em;
+    margin:0 auto;
+}
+
+.topspace{
+    padding-top:21px;
+}
+
+.body_background{
+    background-image: url("../images/badybackground2.jpg")
+}
+
+.left_layout{
+    width: 78.70074547%;
+    float: left;
+}
+
+.right_layout{
+    width: 18.84984026%;
+    float:right;
+ 
+}
+
+
+
+.nav-bar-add{
+    background: #f5f5f5;
+    width: 100%;
+   
+}
+
+
+.left_layout2{
+    float: left;
+    margin-top:1px;
+    width: 26.38700947%;
+  
+}
+
+.right_layout2{
+    float: right;
+    margin-left: 28px;
+    margin-top:-2px;
+    width:69.41813261%;
+}
+
+
+
+
+
+
