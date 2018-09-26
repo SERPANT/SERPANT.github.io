@@ -1,0 +1,20 @@
+
+
+.redtext{
+    color:red;
+
+}
+
+.square{
+    padding:40px;
+    margin-top: 20px;
+    background: greenyellow
+}
+
+.part{
+    margin-top: 20px;
+}
+
+.parent,.child{
+    padding:20px;
+}

@@ -1,0 +1,28 @@
+.parent{
+    width: 100%;
+    height: 100%;
+
+}
+
+.red{
+    width: 200px;
+    height: 200px;
+    background: pink
+
+}
+
+
+#green{
+    width: 200px;
+    height: 200px;
+    background: blue
+
+}
+
+
+.enable{
+    width:500px;
+    height:200px;
+    color:#f9f9f9;
+    background: #49c !important;
+}

@@ -36,7 +36,7 @@ function normalize(){
     for(var i=0;i<people.length;i++){
 
        //normalizing elach element of the array person
-          normalize_element(people[i]);
+          normalizeElement(people[i]);
     }
 
    //sorting the array newarr
@@ -46,7 +46,7 @@ function normalize(){
 
  
 
-    function normalize_element(people)
+    function normalizeElement(people)
     {
           //if children exist
           if(people.children!=undefined)
@@ -58,7 +58,7 @@ function normalize(){
                   for(var child=0;child<people.children.length;child++)
                   {  
                         //traversing the children 
-                        normalize_element(people.children[child]);
+                        normalizeElement(people.children[child]);
 
                         //adding the children id to arr
                         arr.push(people.children[child].id);
