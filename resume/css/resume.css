@@ -1,0 +1,354 @@
+body{
+    margin:0px;
+    padding: 0px;
+    color: white;
+    background: #edeff5
+}
+.container{
+    max-width: 1600px;
+    margin: 0 auto;
+    background:white;
+    padding: 0px;
+    margin-bottom:5px;
+    margin-top: 0px;
+    margin-left:0px;
+    margin-right: 0px;
+    
+   
+}
+
+#header{
+    background:white;
+    color: black;
+   margin-left: 20px;
+    position: sticky;
+    width:1600;
+   top:0;
+   height: 70px;
+   margin:0 auto;
+ 
+   padding: 0px;
+
+  
+  
+   
+}
+
+.parallex{
+    background: url(../images/bg3.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    height: 620px;
+    width:100%;
+    margin:0px;
+   
+}
+
+
+.parallex2{
+    background: url(../images/bg5.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    height: 850px;
+    width:100%;
+    margin:0px;
+   
+}
+
+#title_name{
+    padding-top:10px ; 
+    padding-bottom: 10px;
+    margin:0px;
+    color: black;
+    margin-left: 590px
+}
+
+
+#title{
+    padding:10px;
+    padding-left: 15px;
+    margin-left:30px;
+  
+    
+
+}
+
+
+#Name_container{
+    font: normal normal normal 88px/1.4em avenir-lt-w01_85-heavy1475544,sans-serif;
+   
+    font-size: 30px;
+    position:absolute;
+    top:55%;
+    left:31%;
+    margin:0px;
+}
+
+
+
+.Designation{
+   
+    position:absolute;
+    top:64%;
+    font-size: 25px;
+    color: #94A3BA;
+    left:40%;
+    margin:0px;
+    letter-spacing: 0.8px
+}
+
+#Name{
+    margin:0px; line-height:1.2em; text-align:center;  vertical-align:baseline; 
+    letter-spacing: 3px
+}
+
+#position{
+    font: normal normal normal 25px/1.4em avenir-lt-w01_35-light1475496,sans-serif;
+    font-style: normal;
+    font-variant-ligatures: normal;
+    font-variant-caps: normal;
+    font-variant-numeric: normal;
+    font-variant-east-asian: normal;
+    font-weight: normal;
+    font-stretch: normal;
+    font-size: 25px;
+    line-height: 1.4em;
+    font-family: avenir-lt-w01_35-light1475496, sans-serif;
+    color: #070A0E;
+}
+
+.profile_image{
+
+    
+    margin:0px;
+    position: absolute;
+    top:580px;
+  left:40%;
+
+}
+
+#profile_photo{
+    width: 228px; height: 228px; 
+    object-fit: cover;
+    border-radius: 50%;
+    border-color: white;
+    border:7px solid white;
+}
+
+
+}
+
+.darken{
+    background:black;
+    width: 100%;
+    height: 100%;
+    opacity: 0.4;
+}
+
+.Info{
+    background: #edeff5;
+    color: black ;
+    margin-top:180px;
+     padding:20px;
+     padding-bottom: 0px
+}
+
+
+.redline{
+    height: 7px;
+    width: 52px ;
+    background-color: #df3143;
+    margin: 8px;
+}
+
+.whiteline{
+    height: 7px;
+    width: 52px ;
+    background-color: white;
+    margin: 8px;
+}
+.hobby_image{
+    margin:10px;
+    border-radius: 50%
+}
+
+.hobby_image:hover{
+   
+    border-color: #df3143;
+    border:2px solid #df3143;
+}
+
+.square1{
+    width: 300px;
+    height:300px;
+    position: relative;
+    background: #edeff5
+}
+
+.square2{
+    width: 300px;
+    height:300px;
+   position: relative;
+    background: #bbc8dd;
+}
+
+.skill_info{
+    color:black;
+    font-size: 20px;
+    
+    position: absolute;
+    top:35%;
+    left: 25%;
+    
+}
+
+.skill{
+    margin:0px;
+    padding:0px;
+}
+
+
+footer {
+    width:100% ;
+    height:500px; 
+    background: #2e4975
+}
+
+
+.footer_boundry{
+    margin:200px ;
+    margin-top:0px;
+    margin-bottom: 100px;
+    padding-top: 70px;
+    position: relative
+}
+
+
+#footer_title{
+    font-size: 55px
+}
+
+.footer_info{
+    line-height: 40px ; 
+    font-size: 20px
+}
+
+
+.content{
+    margin:200px ; 
+    margin-top:160px ;
+    margin-bottom: 100px
+}
+
+
+.Info_title
+{
+    letter-spacing: 2.3px; font-size: 35px; margin: 8px; margin-left: 6px;
+    padding-bottom: 10px
+
+}
+
+#exprience_infocontainer,#education_infocontainer{
+    margin-top:30px
+}
+
+.nobottom{
+    margin-bottom:0px
+}
+
+.location_subheading{
+    margin-top:4px
+}
+
+.subheading{
+    color: #94a3ba
+}
+
+.detail_paragraph{
+    width: 320px
+}
+
+
+.main_subheading{
+    color: black ;
+    margin-top: 80px ; 
+    padding:20px;
+    padding-bottom: 0px
+}
+
+.background_white{
+    background: white
+}
+
+.width100{
+    width: 100% ;
+}
+
+.hobbies_paddingttop
+{
+    padding-top: 30px;
+}
+
+#hobbies_image_container
+{
+    margin-top:35px
+}
+
+.parallex_text_container{
+    margin:200px ;
+    margin-top:100px;
+    margin-bottom: 100px;
+    padding-top: 50px
+}
+
+#skill_list_container{
+    position: relative;
+     margin-top: 60px;
+     margin-left:100px
+}
+
+#quick_detail_container{
+    position: absolute; 
+    left:38%;
+   
+}
+
+.postion_relative{
+    position: relative
+}
+
+.navigation{
+    display: flex;
+    list-style: none;
+   
+    
+}
+
+.navbutton{
+
+    height: 100%;
+    padding:5px;
+    padding-left:15px;
+    padding-right:15px;
+    text-align: center;
+    background: #4CAF50;
+    
+}
+
+.navbutton a{
+    height: 100%;
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color:white;
+  
+}
+
+.navbutton:hover{
+    background-color: #df3143;
+}
+
+.nav_container{
+ position: absolute;
+ right: 30%;
+}

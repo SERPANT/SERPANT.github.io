@@ -1,0 +1,62 @@
+html { 
+    background: url(../images/bg.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    font-family: 'Helvetica Neve',sans-serif
+  }
+.profile_box{
+    width:400px;
+    height: 500px;
+    background: rgba(0, 0,0, 0.4);
+    padding: 40px;
+    color: white;
+    margin:0 auto;
+    margin-top: 140px;
+    text-align: center
+}
+
+
+#profile_pic{
+height: 200px;
+width: 180px;
+border-radius: 50%;
+margin-top: 26px;
+}
+
+h1{
+    font-weight: 30;
+    letter-spacing: 2;
+    font-size: 40px;
+}
+
+.button{
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 10px
+}
+
+.button_boundry{
+    margin-top: 3s0px
+}
+
+.button:hover{
+    background: lightgreen
+}
+
+h2{
+    margin:0px;
+    padding:0px;
+}
+
+.about{
+    margin:7px
+}
+
