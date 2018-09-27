@@ -36,6 +36,10 @@ img{
     opacity: .7;
 }
 
+.btn:hover{
+    color:red;
+}
+
 .dotElement{
 	position: absolute;	
 	left: 300px;
@@ -50,6 +54,11 @@ img{
     margin-left: 20px;
 	cursor: pointer;
     background-image: url(../images/dot-icon.png)
+}
+
+.dotElement span.active{
+
+    background-image: url(../images/dot-icon-hover.png)
 }
 
 

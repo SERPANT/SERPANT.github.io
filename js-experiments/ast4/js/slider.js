@@ -1,5 +1,8 @@
 
+
 var imageul;
+var dotArray ;
+var preIndex=0;
 var animateRef;
 var numOfImages;
 var refSlideTimer;
@@ -24,6 +27,7 @@ function componentInit()
 
     initButton();
     createDotElement();
+    updateDotElement();
 }
 
 
@@ -37,6 +41,8 @@ function initButton()
         //checking animation is active or not
         if(currentIndex>0 && animationActive===0){
             animationActive=1;
+
+            preIndex=currentIndex;
             currentIndex--;
             animate(1);
             
@@ -48,6 +54,7 @@ function initButton()
           //checking animation is active or not
         if(currentIndex<3 && animationActive===0){
             animationActive=1;
+            preIndex=currentIndex;
             currentIndex++;
             animate(-1);
             
@@ -91,7 +98,7 @@ function  createDotElement(){
     var boxContainer= document.getElementsByClassName("boxes")[0];
     var dotElement = document.createElement("div");
     dotElement.setAttribute("class", "dotElement");
-    var dotArray = [];
+     dotArray = [];
 
     for(var i=0;i<numOfImages;i++)
     {
@@ -103,6 +110,7 @@ function  createDotElement(){
             {
                 var steps=index-currentIndex;
                 console.log(steps);
+                preIndex=currentIndex;
                 currentIndex=index;
                 if(steps>0)
                 {
@@ -161,6 +169,7 @@ function startSlide()
             directionToMove=1;
             stepsToTake=-1;
         }
+        preIndex=currentIndex;
         currentIndex=currentIndex+stepsToTake;   
          
             animate(directionToMove);
@@ -177,9 +186,9 @@ function stopSlide(){
 
 /**
  * this animates the transition from current index to next index
- * @param {int} next index that is to be loaded next in the image
+ * @param {int} nextStep index that is to be loaded next in the image
  */
-function animate(nextIndex)
+function animate(nextStep)
 {
     
     stopSlide();
@@ -187,7 +196,7 @@ function animate(nextIndex)
 
     animateRef=setInterval(function(){
         //ul.style.marginLeft=-(curr*800)/250+"px";
-        imageUlShifted=imageUlShifted+(nextIndex*800)/250;
+        imageUlShifted=imageUlShifted+(nextStep*800)/250;
         if(animationFramestime===250)
         {
           animateOver();
@@ -203,7 +212,7 @@ function animate(nextIndex)
 
 
 //stops the animation transition
-function stopanimate()
+function stopAnimate()
 {
     clearInterval(animateRef);
     animationActive=0;
@@ -214,9 +223,16 @@ function stopanimate()
 //called when animation is required to be stopped
 function animateOver()
 {
-    stopanimate();
+    stopAnimate();
+    updateDotElement()
     startSlide();
     
+}
+
+function updateDotElement()
+{
+   dotArray[preIndex].classList.remove("active");
+    dotArray[currentIndex].classList.add("active");
 }
 
 //initialze component
