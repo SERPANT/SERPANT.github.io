@@ -33,6 +33,8 @@ function componentInit()
 function initButton()
 {
     var leftFunction=function(){
+
+        //checking animation is active or not
         if(currentIndex>0 && animationActive===0){
             animationActive=1;
             currentIndex--;
@@ -42,6 +44,8 @@ function initButton()
     };
 
     var rightFunction=function(){
+
+          //checking animation is active or not
         if(currentIndex<3 && animationActive===0){
             animationActive=1;
             currentIndex++;
@@ -144,6 +148,9 @@ function startSlide()
  //   diff=Math.abs( next-curr);
     refSlideTimer=setInterval(function(){
        
+       if(animationActive===0) 
+       {
+           animationActive=1
         if(currentIndex==0)
         {
            // shifted=0;
@@ -157,7 +164,7 @@ function startSlide()
         currentIndex=currentIndex+stepsToTake;   
          
             animate(directionToMove);
-        },3000);
+        }},3000);
 }
 
 //stops the slider
