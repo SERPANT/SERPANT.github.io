@@ -6,7 +6,7 @@ var refSlideTimer;
 var stepsToTake=1;
 var currentIndex=0;
 var imageUlShifted=0;
-var animationActive=0;
+var animationActive=0;  //tells if the animation is active or not
 var directionToMove=-1;
 var animationFramestime=0;
 
@@ -102,11 +102,18 @@ function  createDotElement(){
                 currentIndex=index;
                 if(steps>0)
                 {
-                    
-                    animate(-1*steps);
+                    if(animationActive===0)
+                    {
+                        animationActive=1;   
+                        animate(-1*steps);
+                    }
                 }
                 else if(steps<0){
-                    animate(-1*steps);
+                    if(animationActive===0)
+                    {
+                        animationActive=1;
+                        animate(-1*steps);
+                    }
                 }
             
             }
@@ -147,7 +154,8 @@ function startSlide()
             directionToMove=1;
             stepsToTake=-1;
         }
-        currentIndex=currentIndex+stepsToTake;    
+        currentIndex=currentIndex+stepsToTake;   
+         
             animate(directionToMove);
         },3000);
 }
@@ -166,6 +174,7 @@ function stopSlide(){
  */
 function animate(nextIndex)
 {
+    
     stopSlide();
     animationFramestime=0;
 
