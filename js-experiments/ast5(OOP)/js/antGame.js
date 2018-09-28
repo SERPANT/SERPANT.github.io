@@ -1,6 +1,8 @@
 
 var game;
 const animationFrame=100;
+var widthRandom=1500;
+var heightRandom=710;
 
 //this is like main and the starting point  of the game
 function startPage()
@@ -42,8 +44,9 @@ function Game()
     var score=0;
     var animationCounter=animationFrame;
     var scoreTitle;
-    var antCount=40;
+    var antCount=60;
     var FPS=30;
+    var test=0;
 
     //the initialize function of the game : this is where the game starts to run
     this.init=function()
@@ -177,10 +180,27 @@ function Game()
             if(ants[i].id!=ant.id)
             {
               
-                if (ants[i].x < ant.x + ant.width && ants[i].x + ants[i].width > ant.x &&ants[i].y < ant.y + ant.height && ants[i].height +ants[i].y > ants.y) 
+                // if (ants[i].x < ant.x + ant.width && ants[i].x + ants[i].width > ant.x &&ants[i].y < ant.y + ant.height && ants[i].height +ants[i].y > ants.y) 
+                // {
+                //      ant.changeDirection();
+                //      console.log("here");
+                //  }
+              
+                var rec1w=ants[i].width;
+                var rec1h=ants[i].height;
+                var rec1x=(ants[i].element.style.left).slice(0,-2);
+                var rec1y=(ants[i].element.style.top).slice(0,-2);
+
+                var rec2w=ant.width;
+                var rec2h=ant.height;
+                var rec2x=(ant.element.style.left).slice(0,-2);
+                var rec2y=(ant.element.style.top).slice(0,-2);
+                
+                if (rec1x < rec2x + rec2w && rec1x + rec1w > rec2x && rec1y < rec2y + rec2h  && rec1h +rec1y > rec2y) 
                 {
+                    console.log("clashed");
                      ant.changeDirection();
-                     console.log("here");
+                     
                  }
                  
             }
@@ -205,10 +225,12 @@ function Ant(index)
     this.targetX=0;
     this.targetY=0;
     this.color="red";
-    this.x=random(0,1500);
-    this.y=random(0,700);
+   
     this.width=Math.floor(Math.random()*40)+20;
     this.height=Math.floor(Math.random()*40)+20;
+
+    this.x=random(0,widthRandom-this.width-5);
+    this.y=random(0,heightRandom-this.height-5);
     const hexCode= [0,1,2,3,4,5,6,7,8,9,'a','b','c','d','e','f'];  //hex code for ramdom color generator
 
 
@@ -245,8 +267,8 @@ function Ant(index)
     //computes new positon for the ant
     this.newPostion=function()
     {
-        var newx=random(0,1500);
-        var newy=random(0,700);
+        var newx=random(0,widthRandom-1);
+        var newy=random(0,heightRandom-1);
 
         this.deltax=(newx-this.x)/animationFrame;
         this.deltay=(newy-this.y)/animationFrame;
@@ -260,12 +282,24 @@ function Ant(index)
     {
         nx=this.x+this.deltax;
         ny=this.y+this.deltay;
-        if(nx>1700 || nx<0){
-            nx=nx*(-1);
+
+        
+        if(nx+this.width>=widthRandom || nx<0){
+
+
+          
+            this.deltax=this.deltax*(-1);
+            nx=this.x+this.deltax;
+
+            
         }
-        if(ny>700 || ny<0)
+
+
+        if(ny+this.height>=heightRandom || ny<0)
         {
-            ny=ny*(-1);
+           
+            this.deltay=this.deltay*(-1);
+            ny=this.y+this.deltay;
         }
         this.element.style.left=nx+"px";
         this.element.style.top=ny+"px";

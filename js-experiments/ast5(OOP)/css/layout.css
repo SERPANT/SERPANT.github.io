@@ -3,14 +3,17 @@
     width: 1000px;
     height:700px;
     background-image: url(../images/grass.png);
+    border-style: solid;
+    border-color: red
 }
 
 
 .game-container{
-    width: 1700px;
+    width: 1500px;
     height:710px;
    /* background-image: url(../images/grass.png);*/
    background: black;
+   overflow: hidden;
     position: relative;
 }
 
