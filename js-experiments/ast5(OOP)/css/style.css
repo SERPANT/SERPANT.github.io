@@ -12,6 +12,10 @@
    
 }
 
+.alive{
+    border-style: solid;
+    border-color: white
+}
 
 .dead{
     background: red !important;

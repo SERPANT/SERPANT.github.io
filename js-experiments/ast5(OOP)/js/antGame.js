@@ -3,6 +3,13 @@ var game;
 const animationFrame=100;
 var widthRandom=1500;
 var heightRandom=710;
+var ants=[];
+
+var maxw=40;
+var maxh=40;
+
+var minw=20;
+var minh=20;
 
 //this is like main and the starting point  of the game
 function startPage()
@@ -40,11 +47,10 @@ function gameIntroPage(){
 function Game()
 {
     var refGameLoop;
-    var ants=[];
     var score=0;
     var animationCounter=animationFrame;
     var scoreTitle;
-    var antCount=60;
+    var antCount=40;
     var FPS=30;
     var test=0;
 
@@ -125,11 +131,13 @@ function Game()
                     return function(){
                         setTimeout(() => {
                         GameContainer.removeChild(antObject.element);  
-                        }, 1500);
+                        }, 1000);
 
-                   antObject.element.className="dead";
-                //   ants.splice(a.id,1);                      //must be corrected as evey id is changed
-                   score++;
+                  
+                //   ants.splice(a.id,1);     
+                if(antObject.element.className!="dead")                 //must be corrected as evey id is changed
+                  { score++;}
+                  antObject.element.className="dead";
                 }
             })(ant);
 
@@ -160,8 +168,12 @@ function Game()
         {
             if(ants[i].element.className!=="dead")
             {
-                ants[i].updatePosition();
-                collitionDetection(ants[i]);
+                var collide=ants[i].collitionDetection();
+
+                if(collide===0){
+                    ants[i].updatePosition();  
+                }
+              
                 updateScore();
             }
         }
@@ -173,40 +185,40 @@ function Game()
      * 
      * @param {*} ant :this is the ant for which collition is checked
      */
-    function collitionDetection(ant)
-    {
-        for(var i=0;i<ants.length;i++)
-        {
-            if(ants[i].id!=ant.id)
-            {
+    // function collitionDetection(ant)
+    // {
+    //     for(var i=0;i<ants.length;i++)
+    //     {
+    //         if(ants[i].id!=ant.id)
+    //         {
               
-                // if (ants[i].x < ant.x + ant.width && ants[i].x + ants[i].width > ant.x &&ants[i].y < ant.y + ant.height && ants[i].height +ants[i].y > ants.y) 
-                // {
-                //      ant.changeDirection();
-                //      console.log("here");
-                //  }
+    //             // if (ants[i].x < ant.x + ant.width && ants[i].x + ants[i].width > ant.x &&ants[i].y < ant.y + ant.height && ants[i].height +ants[i].y > ants.y) 
+    //             // {
+    //             //      ant.changeDirection();
+    //             //      console.log("here");
+    //             //  }
               
-                var rec1w=ants[i].width;
-                var rec1h=ants[i].height;
-                var rec1x=(ants[i].element.style.left).slice(0,-2);
-                var rec1y=(ants[i].element.style.top).slice(0,-2);
+    //             var rec1w=ants[i].width;
+    //             var rec1h=ants[i].height;
+    //             var rec1x=(ants[i].element.style.left).slice(0,-2);
+    //             var rec1y=(ants[i].element.style.top).slice(0,-2);
 
-                var rec2w=ant.width;
-                var rec2h=ant.height;
-                var rec2x=(ant.element.style.left).slice(0,-2);
-                var rec2y=(ant.element.style.top).slice(0,-2);
+    //             var rec2w=ant.width;
+    //             var rec2h=ant.height;
+    //             var rec2x=(ant.element.style.left).slice(0,-2);
+    //             var rec2y=(ant.element.style.top).slice(0,-2);
                 
-                if (rec1x < rec2x + rec2w && rec1x + rec1w > rec2x && rec1y < rec2y + rec2h  && rec1h +rec1y > rec2y) 
-                {
-                    console.log("clashed");
-                     ant.changeDirection();
+    //             if (rec1x < rec2x + rec2w && rec1x + rec1w > rec2x && rec1y < rec2y + rec2h  && rec1h +rec1y > rec2y) 
+    //             {
+    //                 console.log("clashed");
+    //                  ant.changeDirection();
                      
-                 }
+    //              }
                  
-            }
+    //         }
            
-        }
-    }
+    //     }
+    // }
 }
 
    
@@ -226,8 +238,9 @@ function Ant(index)
     this.targetY=0;
     this.color="red";
    
-    this.width=Math.floor(Math.random()*40)+20;
-    this.height=Math.floor(Math.random()*40)+20;
+    this.width=Math.floor(Math.random()*maxw)+minw;
+   // this.height=Math.floor(Math.random()*maxh)+minh;
+    this.height=this.width;
 
     this.x=random(0,widthRandom-this.width-5);
     this.y=random(0,heightRandom-this.height-5);
@@ -252,7 +265,7 @@ function Ant(index)
         if(number%2===0)
         {
             ant.classList.add("circle");
-        }
+     }
 
         this.element=ant;
     }
@@ -282,16 +295,12 @@ function Ant(index)
     {
         nx=this.x+this.deltax;
         ny=this.y+this.deltay;
-
+       // this.element.style.transform=" rotate(0.2deg)";
         
         if(nx+this.width>=widthRandom || nx<0){
-
-
-          
+  
             this.deltax=this.deltax*(-1);
-            nx=this.x+this.deltax;
-
-            
+            nx=this.x+this.deltax;     
         }
 
 
@@ -311,9 +320,20 @@ function Ant(index)
     //changes the direction of ant
     this.changeDirection=function()
     {
+         //  this.element.style.left=(this.element.style.left*10/100)*(-10);
+        //this.element.style.top=this.deltay*(-10);
+        // this.deltax=this.deltax*(-1);
+        // this.element.style.left=this.x+this.deltax+"px";
+        
+        // this.deltay=this.deltay*(-1);
+        // this.element.style.top=this.x+this.deltay+"px";
+
         this.deltax=this.deltax*(-1);
         this.deltay=this.deltay*(-1);
+   //     this.updatePosition();
     }
+
+
 
     function getHexColor()
             {
@@ -325,6 +345,50 @@ function Ant(index)
                 
                 return color;
             }
+
+    this.collitionDetection=function()
+    {
+        var collisionYes=0;
+        for(var i=0;i<ants.length;i++)
+        {
+            if(ants[i].id!=this.id)
+            {
+              
+                // if (ants[i].x < ant.x + ant.width && ants[i].x + ants[i].width > ant.x &&ants[i].y < ant.y + ant.height && ants[i].height +ants[i].y > ants.y) 
+                // {
+                //      ant.changeDirection();
+                //      console.log("here");
+                //  }
+              
+                var rec1w=ants[i].width;
+                var rec1h=ants[i].height;
+                var rec1x=ants[i].x;
+                var rec1y=ants[i].y;
+
+                var rec2w=this.width;
+                var rec2h=this.height;
+                var rec2x=this.x+this.deltax;
+                var rec2y=this.y+this.deltay;
+                
+                if (rec1x < rec2x + rec2w && rec1x + rec1w > rec2x && rec1y < rec2y + rec2h  && rec1h +rec1y > rec2y) 
+                {
+                   
+                     this.changeDirection();
+                    collisionYes=1;
+                     
+                 }
+                 
+            }
+           
+        }
+
+        if(collisionYes){
+            return 1;
+        }
+        else{
+            return 0;
+        }
+    }
 }
 
 startPage();  //used to start the game
