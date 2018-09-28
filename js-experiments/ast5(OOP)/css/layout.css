@@ -1,0 +1,16 @@
+.container
+{
+    width: 1000px;
+    height:700px;
+    background-image: url(../images/grass.png);
+}
+
+
+.game-container{
+    width: 1700px;
+    height:710px;
+   /* background-image: url(../images/grass.png);*/
+   background: black;
+    position: relative;
+}
+

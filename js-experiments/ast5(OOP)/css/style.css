@@ -1,0 +1,29 @@
+.ant{
+    background-image: url("../images/ant.gif");
+}
+
+.start-button{
+    position: absolute;
+    width: 100%;
+    border:none;
+    background: black;
+    color: green;
+    font-size: 60px;
+   
+}
+
+
+.dead{
+    background: red !important;
+   
+}
+
+.score-board{
+    border-style: dashed;
+    border-color: white;
+    position: relative;
+}
+
+.circle{
+    border-radius: 50%;
+}
