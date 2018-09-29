@@ -23,11 +23,15 @@
 }
 
 .score-board{
-    border-style: dashed;
-    border-color: white;
-    position: relative;
+
 }
 
 .circle{
     border-radius: 50%;
+}
+
+.restart{
+    bottom: 10px;
+    right:50px;
+    background: green
 }
