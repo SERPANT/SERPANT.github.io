@@ -23,7 +23,11 @@
 }
 
 .score-board{
-
+    top:10px;
+    left: 10px;
+    border-style: dashed;
+    border-color: gold;
+    padding: 8px;
 }
 
 .circle{
@@ -32,6 +36,12 @@
 
 .restart{
     bottom: 10px;
-    right:50px;
-    background: green
+    right:10px;
+    width:80px;
+    height:80px;
+    background-image: url(../images/restart2.jpg);
+}
+
+.restart:hover{
+    background-image: url(../images/hover2.jpg);
 }

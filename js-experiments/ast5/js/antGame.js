@@ -1,8 +1,8 @@
 var game;
-var maxw=40;
-var maxh=40;
-var minw=20;
-var minh=20;
+var maxw=45;
+var maxh=45;
+var minw=25;
+var minh=25;
 var ants=[];
 var widthRandom=1500;
 var heightRandom=710;
@@ -12,29 +12,39 @@ const animationFrame=100;
 
 
 //this is like main and the starting point  of the game
-function startPage()
-{
-    gameIntroPage();
-}
+function startPage() { gameIntroPage(); }
 
 //the first page of the game to start the game
 function gameIntroPage(){
+    //front ant gif
+    frontAntImage();
+    //renders game start button
+    GameStartButton();   
+}
 
+
+
+function frontAntImage()
+{
     frontImage=document.createElement("div");
     frontImage.style.width="100%";
     frontImage.style.height="500px";
     frontImage.className="ant";
     document.body.appendChild(frontImage);
+}
 
 
+
+function GameStartButton()
+{
     startButton=document.createElement("button");
     startButton.width="100%";
     startButton.innerHTML="START GAME";
     startButton.className="start-button";
     document.body.appendChild(startButton);
 
-    //starting the game on button click
-    startButton.onclick=function(){
+     //starting the game on button click
+     startButton.onclick=function(){
         document.body.removeChild(startButton);
         document.body.removeChild(frontImage);
         game=new Game();
@@ -46,13 +56,14 @@ function gameIntroPage(){
 //the game object
 function Game()
 {
-    var refGameLoop;
-    var score=0;
-    var animationCounter=animationFrame;
-    var scoreTitle;
-    var antCount=50;
     var FPS=30;
-    var test=0;
+    var score=0;
+    var scoreTitle;
+    var refGameLoop; 
+    var antCount=50;
+    var animationCounter=animationFrame;
+    
+
 
     //the initialize function of the game : this is where the game starts to run
     this.init=function()
@@ -65,8 +76,11 @@ function Game()
     //the game loop of the game
     var gameLoop=function()
     {
+        if(score===antCount)  {  gameWon();  }
+
         //update the next target position for the ant only after the animation is completed 
-        if(animationCounter===animationFrame){
+        if(animationCounter===animationFrame)
+        {
             update();
             animationCounter=0;
         }
@@ -75,9 +89,15 @@ function Game()
         animationCounter++;
     }
 
+    function gameWon()
+    {
+        this.stopGame();
+        document.body.innerHTML="";
+
+    }
+
 
     this.stopGame=function() { clearInterval(refGameLoop);}
-
 
 
 
@@ -85,6 +105,7 @@ function Game()
         createContainer();
         createAnts(antCount);
     }
+
 
     //this sets up the gamecontainer on the screen 
     function createContainer(){
@@ -94,10 +115,52 @@ function Game()
         GameContainer.className="game-container";
         document.body.appendChild(GameContainer);
 
+        scoreBoard=createScoreBoard();
+        restart=createRestartButton();
+    
+        GameContainer.appendChild(scoreBoard);
+        GameContainer.appendChild(restart);
+
+    }
+
+    //creating restart button
+    function createRestartButton()
+    {
+        Restart=document.createElement("div");
+        Restart.className="restart";
+        Restart.style.position="absolute";
+        Restart.onclick=
+        function()
+        {
+            game.stopGame();
+            document.body.innerHTML="";
+            startPage();
+        }
+
+        // restartTitle=document.createElement("H2");
+        // restartTitle.style.position="Restart";
+        // restartTitle.style.color="white"
+        // restartTitle.innerHTML="RESTART";
+        // Restart.appendChild(restartTitle);
+
+        //restartImage=document.createElement("img");
+       // restartImage.setAttribute("src","restart.jpg");
+        
+       // Restart.appendChild(restartImage);
+
+        return Restart;
+    }
+
+
+
+
+    //creating score board
+    function createScoreBoard()
+    {
         //score board
         Score=document.createElement("div");
         Score.className="score-board";
-       // Score.style.position="relative";
+        Score.style.position="absolute";
 
 
         // h1 text on score board
@@ -107,35 +170,13 @@ function Game()
         scoreTitle.innerHTML="Score -"+score;
         Score.appendChild(scoreTitle);
 
-
-        Restart=document.createElement("div");
-        Restart.className="restart";
-        Restart.style.position="absolute";
-        Restart.onclick=
-        function()
-        {
-            game.stopGame();
-            game.init();
-        }
-
-
-
-        restartTitle=document.createElement("H2");
-        restartTitle.style.position="Restart";
-        restartTitle.style.color="white"
-        restartTitle.innerHTML="RESTART";
-        Restart.appendChild(restartTitle);
-        
-    
-
-        GameContainer.appendChild(Score);
-        GameContainer.appendChild(Restart);
-
+        return Score;
     }
 
 
     //used to re-render the score title
     function updateScore(){ scoreTitle.innerHTML="Score -"+score; }
+
 
 
     /**
@@ -162,7 +203,6 @@ function Game()
                   antObject.element.className="dead";
                 }
             })(ant);
-
 
             GameContainer.appendChild(ant.element);
             ants.push(ant);
@@ -212,34 +252,29 @@ function Game()
  */
 function Ant(index)
 {
-   
+    this.x;
+    this.y;
     this.id=index;
     this.element;
     this.deltax=0;   //for movement in x direction in animation
     this.deltay=0;   //for movement in y direction in animation
     this.targetX=0;
-    this.targetY=0;
-    this.color="red";
-   
+    this.targetY=0;  
     this.width=Math.floor(Math.random()*maxw)+minw;
    // this.height=Math.floor(Math.random()*maxh)+minh;
     this.height=this.width;
-
-    this.x;
-    this.y;
     const hexCode= [0,1,2,3,4,5,6,7,8,9,'a','b','c','d','e','f'];  //hex code for ramdom color generator
 
 
 
     this.create=function()
-     {
+     {  
         ant= document.createElement("div");
         ant.style.width=this.width+"px";
         ant.style.height=this.height+"px";
         ant.style.background=getHexColor();
         ant.className="alive";
         ant.style.position="absolute";
-
         
         this.x=random(0,widthRandom-this.width-5);
         this.y=random(0,heightRandom-this.height-5);
@@ -257,7 +292,7 @@ function Ant(index)
         if(number%2===0)
         {
             ant.classList.add("circle");
-     }
+         }
 
         this.element=ant;
     }
@@ -314,7 +349,6 @@ function Ant(index)
     {
         this.deltax=this.deltax*(-1);
         this.deltay=this.deltay*(-1);
- 
     }
 
 
@@ -329,6 +363,7 @@ function Ant(index)
                 
                 return color;
             }
+
 
     this.collitionDetection=function()
     {
@@ -349,10 +384,9 @@ function Ant(index)
                 var rec2y=this.y+this.deltay;
                 
                 if (rec1x < rec2x + rec2w && rec1x + rec1w > rec2x && rec1y < rec2y + rec2h  && rec1h +rec1y > rec2y) 
-                {
-                   
+                { 
                      this.changeDirection();
-                    collisionYes=1;
+                     collisionYes=1;
                      
                  }
                  
@@ -360,12 +394,7 @@ function Ant(index)
            
         }
 
-        if(collisionYes){
-            return 1;
-        }
-        else{
-            return 0;
-        }
+        return collisionYes;
     }
 }
 
