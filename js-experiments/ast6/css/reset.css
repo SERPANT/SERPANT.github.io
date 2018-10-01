@@ -1,4 +1,13 @@
 *{
-    margin: 0px;
+    margin:0px;
     padding:0px;
+}
+
+body{
+    background: #76c476;
+    background: black
+}
+
+.canvas{
+    background: black;
 }
