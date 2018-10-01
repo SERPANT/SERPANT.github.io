@@ -7,27 +7,27 @@ var newarr=[];
 function normalize(){
     var people = [{
         id: 1,
-        name: "Aegon Targaryen",
+        name: 'Aegon Targaryen',
         children: [
           
           {
           id: 2,
-          name: "Jaehaerys Targaryen",
+          name: 'Jaehaerys Targaryen',
           children: [{
             id: 4,
-            name: "Daenerys Targaryen"
+            name: 'Daenerys Targaryen'
           },{
             id: 5,
-            name: "Rhaegar Targaryen",
+            name: 'Rhaegar Targaryen',
             children: [{
               id: 6,
-              name: "Aegon Targaryen"
+              name: 'Aegon Targaryen'
             }]
           }] 
         },
         {
           id: 3,
-          name: "Rhaelle Targaryen"
+          name: 'Rhaelle Targaryen'
         }],
       }];
   

@@ -20,8 +20,8 @@ var animationFramestime=0;
 //this initializes all the necessary component in the html page
 function componentInit()
 {
-    imageUl=document.getElementsByTagName("ul")[0];
-    var imgNo=imageUl.getElementsByTagName("img");
+    imageUl=document.getElementsByTagName('ul')[0];
+    var imgNo=imageUl.getElementsByTagName('img');
 
     numOfImages=imgNo.length;
 
@@ -95,16 +95,16 @@ function createButton(className,buttonContent,functionToExecute){
 
 //creates teh dot element
 function  createDotElement(){
-    var boxContainer= document.getElementsByClassName("boxes")[0];
-    var dotElement = document.createElement("div");
-    dotElement.setAttribute("class", "dotElement");
+    var boxContainer= document.getElementsByClassName('boxes')[0];
+    var dotElement = document.createElement('div');
+    dotElement.setAttribute('class', 'dotElement');
      dotArray = [];
 
     for(var i=0;i<numOfImages;i++)
     {
-        var dotItem = document.createElement("span");
+        var dotItem = document.createElement('span');
         //dotItem.setAttribute("class", "dot-item");
-        dotItem.innerHTML = "&nbsp;";
+        dotItem.innerHTML = '&nbsp;';
         dotItem.onclick=(function(index){
             return function()
             {
@@ -203,7 +203,7 @@ function animate(nextStep)
         }  
         if(imageUlShifted>=(numOfImages*-800) || imageUlShifted<=0)
         {
-             imageUl.style.marginLeft=imageUlShifted+"px";
+             imageUl.style.marginLeft=imageUlShifted+'px';
         }
         animationFramestime++;
     },1);
@@ -231,8 +231,8 @@ function animateOver()
 
 function updateDotElement()
 {
-   dotArray[preIndex].classList.remove("active");
-    dotArray[currentIndex].classList.add("active");
+   dotArray[preIndex].classList.remove('active');
+    dotArray[currentIndex].classList.add('active');
 }
 
 //initialze component

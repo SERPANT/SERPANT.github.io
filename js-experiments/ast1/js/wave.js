@@ -1,6 +1,6 @@
 
 
-var pattern="*******";
+var pattern='*******';
 var index=1;
 var increase=1;
 var ref;

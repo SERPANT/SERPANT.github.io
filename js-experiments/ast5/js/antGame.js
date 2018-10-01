@@ -26,10 +26,10 @@ function gameIntroPage(){
 
 function frontAntImage()
 {
-    frontImage=document.createElement("div");
-    frontImage.style.width="100%";
-    frontImage.style.height="500px";
-    frontImage.className="ant";
+    frontImage=document.createElement('div');
+    frontImage.style.width='100%';
+    frontImage.style.height='500px';
+    frontImage.className='ant';
     document.body.appendChild(frontImage);
 }
 
@@ -37,10 +37,10 @@ function frontAntImage()
 
 function GameStartButton()
 {
-    startButton=document.createElement("button");
-    startButton.width="100%";
-    startButton.innerHTML="START GAME";
-    startButton.className="start-button";
+    startButton=document.createElement('button');
+    startButton.width='100%';
+    startButton.innerHTML='START GAME';
+    startButton.className='start-button';
     document.body.appendChild(startButton);
 
      //starting the game on button click
@@ -92,7 +92,7 @@ function Game()
     function gameWon()
     {
         this.stopGame();
-        document.body.innerHTML="";
+        document.body.innerHTML='';
 
     }
 
@@ -111,8 +111,8 @@ function Game()
     function createContainer(){
 
         //creating the main div container
-        GameContainer=document.createElement("div");
-        GameContainer.className="game-container";
+        GameContainer=document.createElement('div');
+        GameContainer.className='game-container';
         document.body.appendChild(GameContainer);
 
         scoreBoard=createScoreBoard();
@@ -126,14 +126,14 @@ function Game()
     //creating restart button
     function createRestartButton()
     {
-        Restart=document.createElement("div");
-        Restart.className="restart";
-        Restart.style.position="absolute";
+        Restart=document.createElement('div');
+        Restart.className='restart';
+        Restart.style.position='absolute';
         Restart.onclick=
         function()
         {
             game.stopGame();
-            document.body.innerHTML="";
+            document.body.innerHTML='';
             startPage();
         }
 
@@ -158,16 +158,16 @@ function Game()
     function createScoreBoard()
     {
         //score board
-        Score=document.createElement("div");
-        Score.className="score-board";
-        Score.style.position="absolute";
+        Score=document.createElement('div');
+        Score.className='score-board';
+        Score.style.position='absolute';
 
 
         // h1 text on score board
-        scoreTitle=document.createElement("H1");
+        scoreTitle=document.createElement('H1');
        // scoreTitle.style.position="absolute";
-        scoreTitle.style.color="white"
-        scoreTitle.innerHTML="Score -"+score;
+        scoreTitle.style.color='white'
+        scoreTitle.innerHTML='Score -'+score;
         Score.appendChild(scoreTitle);
 
         return Score;
@@ -175,7 +175,7 @@ function Game()
 
 
     //used to re-render the score title
-    function updateScore(){ scoreTitle.innerHTML="Score -"+score; }
+    function updateScore(){ scoreTitle.innerHTML='Score -'+score; }
 
 
 
@@ -198,9 +198,9 @@ function Game()
 
                   
                 //   ants.splice(a.id,1);     
-                if(antObject.element.className!="dead")                 //must be corrected as evey id is changed
+                if(antObject.element.className!='dead')                 //must be corrected as evey id is changed
                   { score++;}
-                  antObject.element.className="dead";
+                  antObject.element.className='dead';
                 }
             })(ant);
 
@@ -215,7 +215,7 @@ function Game()
     {
         for(var i=0;i<ants.length;i++)
         {
-            if(ants[i].element.className!=="dead")
+            if(ants[i].element.className!=='dead')
             {
                 ants[i].newPostion();
             }
@@ -228,7 +228,7 @@ function Game()
        
         for(var i=0;i<ants.length;i++)
         {
-            if(ants[i].element.className!=="dead")
+            if(ants[i].element.className!=='dead')
             {
                 var collide=ants[i].collitionDetection();
 
@@ -269,12 +269,12 @@ function Ant(index)
 
     this.create=function()
      {  
-        ant= document.createElement("div");
-        ant.style.width=this.width+"px";
-        ant.style.height=this.height+"px";
+        ant= document.createElement('div');
+        ant.style.width=this.width+'px';
+        ant.style.height=this.height+'px';
         ant.style.background=getHexColor();
-        ant.className="alive";
-        ant.style.position="absolute";
+        ant.className='alive';
+        ant.style.position='absolute';
         
         this.x=random(0,widthRandom-this.width-5);
         this.y=random(0,heightRandom-this.height-5);
@@ -285,13 +285,13 @@ function Ant(index)
             this.y=random(0,heightRandom-this.height-5);
         }
 
-        ant.style.left=this.x+"px";
-        ant.style.top=this.y+"px";
+        ant.style.left=this.x+'px';
+        ant.style.top=this.y+'px';
 
         var number=random(0,1000);
         if(number%2===0)
         {
-            ant.classList.add("circle");
+            ant.classList.add('circle');
          }
 
         this.element=ant;
@@ -337,8 +337,8 @@ function Ant(index)
             this.deltay=this.deltay*(-1);
             ny=this.y+this.deltay;
         }
-        this.element.style.left=nx+"px";
-        this.element.style.top=ny+"px";
+        this.element.style.left=nx+'px';
+        this.element.style.top=ny+'px';
         this.x=nx;
         this.y=ny;     
         //game.stopGame();
