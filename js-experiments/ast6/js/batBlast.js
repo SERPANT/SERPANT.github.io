@@ -493,7 +493,7 @@ function bullets(x,y,imageWidth,imageHeight,source)
 
         if(this.y<-400)
         {
-            bulletsArray.splice(-1,1);
+            bulletsArray.shift();
         }
     }
 }
