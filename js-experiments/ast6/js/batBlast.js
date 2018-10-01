@@ -1,123 +1,105 @@
-
+//the bullet array
 var bulletsArray=[];
 
 
-// (function(){
-  
-//     var game=new Game();
-//    game.init();
-// })();
 
-
-function Game()
+//the main Game Class
+function Game(passedCanvas)
 {
-    var pos=[-908,0,908];
-    var canvas;
-    var context;
-    var zitterAnimation=0;
     var bat;
-    var rock=[];
     var caveBg;
-    var backgroundSound=new Audio();
-    var bulletSound1=new Audio();
-    var crashSound=new Audio();
-    var gameOver=new Audio();
+    var canvas;
     var score=0;
+    var context;
+    var rock=[];   
     var gameOverRing=0;
-    var emojiLoser=["images/simle.png","images/loser1.png","images/loser2.png"];
-    var rockImages=["images/rock3.png","images/rock4.png","images/rock2.png"];
+    var pos=[-908,0,908];
+    var gameOver=new Audio();
+    var dashSound=new Audio();
+    var crashSound=new Audio(); 
+    var bulletSound1=new Audio();
+    var rockImages=['images/rock3.png','images/rock4.png','images/rock2.png'];
    
     this.init=function()
     {
-        canvas=document.getElementsByClassName('canvas')[0];   
-        context = canvas.getContext("2d");
+        //canvas=document.getElementsByClassName('canvas')[0];   
+        canvas=passedCanvas;
+        context = canvas.getContext('2d');
 
 
         bat=new Player();
-        document.addEventListener("keydown",updateDeltaMove);
-       // document.addEventListener("keyup",updateDeltaStop);
-        
+        document.addEventListener('keydown',updateDeltaMove);
 
+        
         caveBg=new Image();
-        caveBg.src="images/background4.jpg";
+        caveBg.src='images/background4.jpg';
        
         rock[0]=new Rock(200,-20,80,80,5);
-        rock[1]=new Rock(600,-20,150,97,4,"images/rock3.png");
-        rock[2]=new Rock(1050,-20,150,150,7,"images/rock4.png");
+        rock[1]=new Rock(600,-20,150,97,4,'images/rock3.png');
+        rock[2]=new Rock(1050,-20,150,150,7,'images/rock4.png');
 
         //sounds
-        bulletSound1.src="audio/fireball.mp3";
-        crashSound.src="audio/crash.ogg";
-        backgroundSound.src="audio/backgroundMusic.mp3";
-        gameOver.src="audio/GameOver.MP3";
+        bulletSound1.src='audio/fireball.mp3';
+        crashSound.src='audio/crash.ogg';
+        gameOver.src='audio/GameOver.MP3';
+        dashSound.src='audio/swish.mp3';
      
-
+        backgroundSound.play()
         gameLoop();
     }
 
+
+
     function updateDeltaMove(event)
     {
-        if(event.code==="ArrowRight")
+        if(event.code==='ArrowRight')
         {
           // bat.deltax=7;
           bat.stepRight();
         }
-         if (event.code==="ArrowLeft")
+         if (event.code==='ArrowLeft')
         {
             
         //   bat.deltax=-7;
           bat.stepLeft();   
         }
 
-        if(event.code=="Space")
+        if(event.code=='Space')
         {
            //var bulletob=new bullets((bat.x+bat.imageWidth/2),(bat.y+bat.imageHeight/2),10,10,"images/fireball2.gif");
-           var bulletob=new bullets((bat.x+bat.imageWidth/3),(bat.y+bat.imageHeight/3),50,50,"images/fireball3.gif");
+           var bulletob=new bullets((bat.x+bat.imageWidth/3),(bat.y+bat.imageHeight/3),50,50,'images/fireball3.gif');
             bulletsArray.push(bulletob);
             bulletSound1.play();
         }
 
-        if(event.code=="KeyA" && bat.mainBooster===10)
-        {
+        if(event.code=='KeyA' && bat.mainBooster===10)
+        {   
+            dashSound.play();
             bat.dash();
             bat.mainBooster=0;
         }
     }
 
-    // function updateDeltaStop(event)
-    // {
-    //     if(event.code==="ArrowRight")
-    //     {
-    //        bat.deltax=0;
-    //     }
-    //      if (event.code==="ArrowLeft")
-    //     {
-            
-    //         bat.deltax=0;
-            
-    //     }
-    // }
 
     function gameLoop()
     {   if(Running===1)
         {
             update();
             render();
-           
         }
         else{
             clearCanvas();
-            ctx.fillStyle="#FFFFFF";
-            ctx.font = "60px Arial";
-            ctx.fillText("GAME OVER",250,300);
-            ctx.font = "30px Arial";
-            ctx.fillText("Score : " +score ,380,380);
+            ctx.fillStyle='#FFFFFF';
+            ctx.font = '60px Arial';
+            ctx.fillText('GAME OVER',250,300);
+            ctx.font = '30px Arial';
+            ctx.fillText('Score : ' +score ,380,380);
 
             var smile =new Image();
-            smile.src="images/simle.png";
+            smile.src='images/simle.png';
             ctx.drawImage(smile,320,30);
 
-            ctx.fillText("Press Enter to Restart " ,290,500);
+            ctx.fillText('Press Enter to Restart ' ,290,500);
 
             if(gameOverRing===0)
             {
@@ -199,7 +181,7 @@ function Game()
     {
         if(score%5==0)
         {
-            rock.push(new Rock(600,-20,150,97,4,rockImages[Math.floor((Math.random()*3))]));
+            rock.push(new Rock(600,-20,150,97,4,rockImages[random(0,3)]));
         }
     }
 
@@ -237,35 +219,35 @@ function Game()
 
     function mainPowerBar()
     {
-        ctx.strokeStyle="#FFFFFF";
+        ctx.strokeStyle='s#FFFFFF';
         ctx.strokeRect(890,150,10,500);
-        ctx.fillStyle="#0000ff";
+        ctx.fillStyle='#0000ff';
         ctx.fillRect(890,150,10,bat.mainBooster*50);
     }
 
 
     function drawScoreBoard()
     {
-        ctx.fillStyle="#FFFFFF";
-        ctx.font = "30px Arial";
-        ctx.fillText("Score Board",850,50);
+        ctx.fillStyle='#FFFFFF';
+        ctx.font = '30px Arial';
+        ctx.fillText('Score Board',850,50);
         ctx.fillText(score,850,90);
     }
 
     function drawHealthBar(){
 
-        ctx.strokeStyle="#FFFFFF";
+        ctx.strokeStyle='#FFFFFF';
         ctx.strokeRect(850,150,30,500);
 
         if(bat.healthBar>300)
         {
-            ctx.fillStyle="#00FF00";
+            ctx.fillStyle='#00FF00';
         }
         else if (bat.healthBar>150){
-            ctx.fillStyle="#ffcc66";
+            ctx.fillStyle='#ffcc66';
         }
         else{
-            ctx.fillStyle="#ff0000";
+            ctx.fillStyle='#ff0000';
         }
       
         ctx.fillRect(851,151,29,bat.healthBar);
@@ -341,13 +323,14 @@ function Game()
     }
 }
 
-function Rock(x,y,width,height,velocity=3,image="images/rock2.png"){
+function Rock(x,y,width,height,velocity=3,image='images/rock2.png')
+{
     var posArray=[90,360,640];
-    this.x=posArray[Math.floor(Math.random()*3)];
+    this.x=posArray[random(0,3)];
     this.y=y;
     this.width=width;
     this.height=height;
-    this.img="images/rock2.png";
+    this.img='images/rock2.png';
     this.element=new Image(); 
     this.imageWidth=120;
     this.imageHeight=120;
@@ -362,7 +345,7 @@ function Rock(x,y,width,height,velocity=3,image="images/rock2.png"){
                         if(this.y>800)
                         {
                             this.y=-508;
-                            var temp=Math.floor(Math.random()*3);
+                            var temp=random(0,3);
                             this.x=posArray[temp];
                         }
                     }
@@ -370,34 +353,33 @@ function Rock(x,y,width,height,velocity=3,image="images/rock2.png"){
     this.resetPos=function()
     {
         this.y=-508;
-        this.x=posArray[Math.floor(Math.random()*3)];
+        this.x=posArray[random(0,3)];
     }
   
 }
 
 
-function Player(image="images/batSprite.png",spriteSize=200,spriteHeight=200)
+function Player(image='images/batSprite.png',spriteSize=200,spriteHeight=200)
 {
-    var posArray=[90,355,635];
-    this.spriteIndex=4;
-    this.spriteWidth=spriteSize;
-    this.spriteHeight=200;
-    this.posIndex=Math.floor(Math.random()*3);
-    this.x=posArray[this.posIndex];
     this.y=500;
-    this.deltax=0;
-    this.deltay=0
-    this.imageWidth=120;
-    this.imageHeight=120;
-    var increaseFlag=0;
-    var delay=20;
     var count=0;
+    var delay=20;
+    this.deltax=0;
+    this.deltay=0;
     this.dashAction=0;
     this.healthBar=500;
+    this.spriteIndex=4;
     this.mainBooster=10;
-
-    this.dashedImage=new Image(); 
-    this.dashedImage.src="images/dashed.png"; 
+    var increaseFlag=0;
+    this.imageWidth=120;
+    this.imageHeight=120;
+    this.spriteHeight=200;
+    this.posIndex=random(0,3);
+    var posArray=[90,355,635];
+    this.dashedImage=new Image();   
+    this.spriteWidth=spriteSize;
+    this.x=posArray[this.posIndex]; 
+    this.dashedImage.src='images/dashed.png'; 
     
 
    this.element=new Image();
@@ -496,4 +478,10 @@ function bullets(x,y,imageWidth,imageHeight,source)
             bulletsArray.shift();
         }
     }
+}
+
+
+function random(start,end)
+{
+    return Math.floor(Math.random()*end+start)
 }
