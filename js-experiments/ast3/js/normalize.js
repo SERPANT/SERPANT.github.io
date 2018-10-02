@@ -1,10 +1,10 @@
 
 
 //new array to store the result
-var newarr=[];
+var newarr = [];
 
 
-function normalize(){
+function normalize() {
     var people = [{
         id: 1,
         name: 'Aegon Targaryen',
@@ -33,7 +33,7 @@ function normalize(){
   
 
      //looping throught the array people 
-    for(var i=0;i<people.length;i++){
+    for(var i = 0 ; i < people.length ; i++) {
 
        //normalizing elach element of the array person
           normalizeElement(people[i]);
@@ -49,13 +49,13 @@ function normalize(){
     function normalizeElement(people)
     {
           //if children exist
-          if(people.children!=undefined)
+          if(people.children != undefined)
           {
           
                   //temp array to store the children id
-                  var arr=[];
+                  var arr =  [];
 
-                  for(var child=0;child<people.children.length;child++)
+                  for(var child = 0 ; child < people.children.length ; child++)
                   {  
                         //traversing the children 
                         normalizeElement(people.children[child]);
@@ -65,13 +65,13 @@ function normalize(){
                   }
 
                  
-                  people.children=arr;      //assigning the id arr to children 
+                  people.children = arr;      //assigning the id arr to children 
 
                   newarr.push(people);
           }
           
           else
-          {      people.children=[];
+          {      people.children = [];
                  newarr.push(people);
           }
       
@@ -81,22 +81,19 @@ function normalize(){
     function sort()
     {
         //new sorted array
-        var arr=[];
+        var arr = [];
 
-      for(var id=1;id<=newarr.length;id++)
+      for(var id = 1 ; id <= newarr.length ; id++)
       {
-            for(var per=0;per<=newarr.length-1;per++)
+            for(var per = 0 ; per<=newarr.length-1 ; per++)
             {
               
-                  if(newarr[per].id==id)
+                  if(newarr[per].id == id)
                   {
-                    
                     arr.push(newarr[per]);
                   }
             }
       }
-
-
       return arr;
     }
 

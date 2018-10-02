@@ -1,7 +1,7 @@
-    var Running=0;
-    var bgFront=new Image();
-    var backgroundSound=new Audio();
-    var can=document.getElementsByClassName('canvas')[0];
+    var Running = 0;
+    var bgFront = new Image();
+    var backgroundSound = new Audio();
+    var can = document.getElementsByClassName('canvas')[0];
     var ctx = can.getContext('2d');
 
     //var can2=document.getElementById("canvas2");
@@ -12,10 +12,10 @@
     function frontInit()
     {
         //importing audio for game play sound
-        backgroundSound.src='audio/backgroundMusic.mp3';
+        backgroundSound.src = 'audio/backgroundMusic.mp3';
 
         //importing image background banner
-        bgFront.src='images/background.jpg';
+        bgFront.src = 'images/background.jpg';
         
         //adding lishner to dom for enter
         document.addEventListener('keydown',checkEnter);
@@ -27,10 +27,10 @@
      */
     function checkEnter(event)
     {
-            if(event.code==='Enter' && Running === 0)
+            if(event.code === 'Enter' && Running === 0)
             {   
-                Running=1;
-                var game=new Game(can);
+                Running = 1;
+                var game = new Game(can);
                 game.init();
 
            //     var game=new Game(can2);
@@ -41,16 +41,16 @@
    
     function drawFrontPage()
     {
-        if(Running===0)
+        if(Running === 0)
         {
             //drawing image banner 
-            ctx.drawImage(bgFront,0,0,850,350);
+            ctx.drawImage( bgFront , 0 , 0 , 850 , 350 );
 
             //draw Menu Text
             drawMenuText();
             
             //this is the press start text
-            ctx.fillText('PRESS ENTER TO START',250,500);
+            ctx.fillText( 'PRESS ENTER TO START', 250, 500 );
 
             //drawing instruction
             drawInstruction();
@@ -62,16 +62,16 @@
 
     function drawInstruction()
     {
-        ctx.font="20px Arial";
-        ctx.fillText('Space -- attack',250,550);
-        ctx.fillText('A -- Dash',250,580);
-        ctx.fillText('ESC -- exit',250,610);
+        ctx.font = "20px Arial";
+        ctx.fillText( 'Space -- attack' , 250 , 550 );
+        ctx.fillText( 'A -- Dash' , 250 , 580 );
+        ctx.fillText( 'ESC -- exit' , 250 , 610 );
     }
 
     //drawing Text Menu
     function drawMenuText()
     {
-      ctx.fillStyle='#FFFFFF';
+      ctx.fillStyle = '#FFFFFF';
       ctx.font = '30px Arial';
       ctx.fillText('MENU',380,400);
     }

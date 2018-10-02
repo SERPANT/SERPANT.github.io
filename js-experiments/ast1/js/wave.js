@@ -1,41 +1,35 @@
 
 
-var pattern='*******';
-var index=1;
-var increase=1;
+var pattern = '*******';
+var index = 1;
+var increase = 1;
 var ref;
 
-function animate()
-{
-    ref=setInterval(drawPattern,50);
+function animate() {
+    ref = setInterval(drawPattern,50);
 }
 
-function drawPattern()
-{
+function drawPattern() {
     console.log(pattern.substring(0,index));
     
-    if(increase)
-    {
+    if(increase) {
         index++;
-        if(index>=pattern.length)
-        {
-            index=index-2;
-            increase=0;
+        if(index >= pattern.length) {
+            index = index - 2;
+            increase = 0;
         }
     }
-    else{
+    else {
         index--;
-        if(index<1)
-        {
-            index=index+2;
-            increase=1;
+        if(index < 1) {
+            index = index + 2;
+            increase = 1;
         }
     }
    
 }
 
 
-function animationStop()
-{
+function animationStop() {
     clearInterval(ref);
 }

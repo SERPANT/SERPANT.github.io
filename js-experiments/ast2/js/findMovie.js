@@ -126,24 +126,24 @@ function loopy() {
       ]; */
     
       
-      var newList=[];
+      var newList = [];
 
       //loop for movieList array
-      for(var type=0;type<movieLists.length;type++)
+      for(var type = 0 ; type < movieLists.length ; type++)
       {
           //loop for video arry
-          for(var video=0;video<movieLists[type].videos.length;video++)
+          for(var video = 0 ; video < movieLists[type].videos.length ; video++)
           {
             
               //loop for boxart arry
-              for(var boxart=0; boxart<movieLists[type].videos[video].boxarts.length;boxart++)
+              for(var boxart = 0; boxart<movieLists[type].videos[video].boxarts.length;boxart++)
               {
-                    var boxartobj=movieLists[type].videos[video].boxarts[boxart];
+                    var boxartobj = movieLists[type].videos[video].boxarts[boxart];
 
-                    if(boxartobj.width===150 && boxartobj.height===200)
+                    if(boxartobj.width === 150 && boxartobj.height === 200)
                     {
                             //creating a new object
-                              newobject={
+                              newobject = {
                                   id:movieLists[type].videos[video].id,
                                   title:movieLists[type].videos[video].title,
                                   boxart:boxartobj.url

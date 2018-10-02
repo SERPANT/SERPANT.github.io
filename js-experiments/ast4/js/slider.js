@@ -2,16 +2,16 @@
 
 var imageul;
 var dotArray ;
-var preIndex=0;
 var animateRef;
 var numOfImages;
+var preIndex = 0;
 var refSlideTimer;
-var stepsToTake=1;
-var currentIndex=0;
-var imageUlShifted=0;
-var animationActive=0;  //tells if the animation is active or not
-var directionToMove=-1;
-var animationFramestime=0;
+var stepsToTake = 1;
+var currentIndex = 0;
+var imageUlShifted = 0;
+var animationActive = 0;  //tells if the animation is active or not
+var directionToMove = -1;
+var animationFramestime = 0;
 
 
 
@@ -36,11 +36,11 @@ function componentInit()
 //initialize the left and right button
 function initButton()
 {
-    var leftFunction=function(){
+    var leftFunction=function() {
 
         //checking animation is active or not
-        if(currentIndex>0 && animationActive===0){
-            animationActive=1;
+        if(currentIndex > 0 && animationActive === 0) {
+            animationActive = 1;
 
             preIndex=currentIndex;
             currentIndex--;
@@ -49,11 +49,11 @@ function initButton()
         }
     };
 
-    var rightFunction=function(){
+    var rightFunction=function() {
 
           //checking animation is active or not
-        if(currentIndex<3 && animationActive===0){
-            animationActive=1;
+        if(currentIndex < 3 && animationActive === 0) {
+            animationActive = 1;
             preIndex=currentIndex;
             currentIndex++;
             animate(-1);
@@ -74,16 +74,16 @@ function initButton()
  * @param {function} functionToExecute this is the function to be executed when the button is clicked
  */
 
-function createButton(className,buttonContent,functionToExecute){
+function createButton(className,buttonContent,functionToExecute) {
+
     var btncontainer= document.getElementsByClassName(className)[0];
 
-    
     var btn = document.createElement('button');
     btn.setAttribute('content', 'test content');
     btn.setAttribute('class', 'btn');
     btn.innerHTML = buttonContent;
 
-    btn.onclick=functionToExecute;
+    btn.onclick = functionToExecute;
 
     btncontainer.appendChild(btn);
 }
