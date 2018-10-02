@@ -16,6 +16,7 @@ class Game
         this.dist=400;
         this.pipes=[];
         this.gravity=4;
+        this.menuPage=0;
         this.running=1;
         this.gameSpeed=2;
         this.pipeNorthWidth=52;
@@ -52,9 +53,20 @@ class Game
 
     }
 
-   moveup(){
+   moveup(event){
+      if(event.code==="Space")
+      {
         this.player.moveUp();
         this.wing.play();
+      }
+      else if(event.code==="Enter" && this.running===0)
+      {
+          this.score=0;
+          this.running=1;
+          this.player.reset();
+          
+      }
+    
    }
 
   
@@ -225,6 +237,8 @@ class Player
     moveUp(){ this.y-=this.jumpVelocity; }
 
     incrementIndex(){ this.index= (this.index+1)%4 }
+
+    reset(){this.y=0;this.x=100 }
 
 }
 
