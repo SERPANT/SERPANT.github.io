@@ -157,6 +157,7 @@ function Game(passedCanvas)
     //checking buttet collision with rocks
     function checkBulletCollision()
     {
+        var bulletDeleteList=[];
         for(var i=0;i<bulletsArray.length;i++)
         {
             for(var j=0;j<rock.length;j++)
@@ -172,8 +173,16 @@ function Game(passedCanvas)
                         rock[j].resetPos();
                         score++;
                         bat.increaseMainBooster();
+                        bulletDeleteList.push(bulletsArray[i]);
+                        
                     }
             }
+        }
+
+        for(var bullet of bulletDeleteList)
+        {
+            var index=bulletsArray.indexOf(bullet);
+            bulletsArray.splice(index,1);
         }
     }
 
