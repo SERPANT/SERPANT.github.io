@@ -52,9 +52,20 @@
             //this is the press start text
             ctx.fillText('PRESS ENTER TO START',250,500);
 
+            //drawing instruction
+            drawInstruction();
+
             //used to loop for displaying images
             requestAnimationFrame(drawFrontPage);
         }
+    }
+
+    function drawInstruction()
+    {
+        ctx.font="20px Arial";
+        ctx.fillText('Space -- attack',250,550);
+        ctx.fillText('A -- Dash',250,580);
+        ctx.fillText('ESC -- exit',250,610);
     }
 
     //drawing Text Menu

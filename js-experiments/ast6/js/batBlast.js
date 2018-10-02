@@ -83,6 +83,11 @@ function Game(passedCanvas)
             bat.dash();
             bat.mainBooster=0;
         }
+
+        if(event.code=="Escape")
+        {
+            Running=0;
+        }
     }
 
 
