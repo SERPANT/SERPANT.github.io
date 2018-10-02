@@ -4,15 +4,20 @@ var bulletsArray=[];
 
 
 //the main Game Class
+/**
+ * 
+ * @param {*} passedCanvas : this is the canvas from the document that is passed down to game object
+ */
 function Game(passedCanvas)
 {
+    //variable initalization
     var bat;
     var caveBg;
     var canvas;
     var score=0;
     var context;
     var rock=[];   
-    var gameOverRing=0;
+    var gameOverAudioPlayed=0;
     var pos=[-908,0,908];
     var gameOver=new Audio();
     var dashSound=new Audio();
@@ -22,18 +27,20 @@ function Game(passedCanvas)
    
     this.init=function()
     {
-        //canvas=document.getElementsByClassName('canvas')[0];   
+        //context setup
         canvas=passedCanvas;
         context = canvas.getContext('2d');
 
-
+        //player creating 
         bat=new Player();
+        //adding even listener
         document.addEventListener('keydown',updateDeltaMove);
 
-        
+        //background
         caveBg=new Image();
         caveBg.src='images/background4.jpg';
        
+        //endmy objects
         rock[0]=new Rock(200,-20,80,80,5);
         rock[1]=new Rock(600,-20,150,97,4,'images/rock3.png');
         rock[2]=new Rock(1050,-20,150,150,7,'images/rock4.png');
@@ -54,26 +61,24 @@ function Game(passedCanvas)
     {
         if(event.code==='ArrowRight')
         {
-          // bat.deltax=7;
           bat.stepRight();
         }
          if (event.code==='ArrowLeft')
         {
-            
-        //   bat.deltax=-7;
           bat.stepLeft();   
         }
 
         if(event.code=='Space')
         {
-           //var bulletob=new bullets((bat.x+bat.imageWidth/2),(bat.y+bat.imageHeight/2),10,10,"images/fireball2.gif");
-           var bulletob=new bullets((bat.x+bat.imageWidth/3),(bat.y+bat.imageHeight/3),50,50,'images/fireball3.gif');
-            bulletsArray.push(bulletob);
-            bulletSound1.play();
+          //creating new bullets
+          var bulletObj=new bullets((bat.x+bat.imageWidth/3),(bat.y+bat.imageHeight/3),50,50,'images/fireball3.gif');
+          bulletsArray.push(bulletObj);
+          bulletSound1.play();
         }
 
         if(event.code=='KeyA' && bat.mainBooster===10)
         {   
+            //special move on key A
             dashSound.play();
             bat.dash();
             bat.mainBooster=0;
@@ -88,30 +93,40 @@ function Game(passedCanvas)
             render();
         }
         else{
-            clearCanvas();
-            ctx.fillStyle='#FFFFFF';
-            ctx.font = '60px Arial';
-            ctx.fillText('GAME OVER',250,300);
-            ctx.font = '30px Arial';
-            ctx.fillText('Score : ' +score ,380,380);
-
-            var smile =new Image();
-            smile.src='images/simle.png';
-            ctx.drawImage(smile,320,30);
-
-            ctx.fillText('Press Enter to Restart ' ,290,500);
-
-            if(gameOverRing===0)
-            {
-                gameOver.play();
-                gameOverRing=1;
-            }
-          
+            gameOverDisplay();
             //print gameover and your score and start againg
         } 
 
         requestAnimationFrame(gameLoop);
        
+    }
+
+    function gameOverDisplay()
+    {
+        clearCanvas();
+
+        //Display GAME OVER text and sore
+        ctx.fillStyle='#FFFFFF';
+        ctx.font = '60px Arial';
+        ctx.fillText('GAME OVER',250,300);
+        ctx.font = '30px Arial';
+        ctx.fillText('Score : ' +score ,380,380);
+
+        //disply smily objects
+        var smile =new Image();
+        smile.src='images/simle.png';
+        ctx.drawImage(smile,320,30);
+
+        //simple restart text
+        ctx.fillText('Press Enter to Restart ' ,290,500);
+
+        //playing the ting sound at game over
+        if(gameOverAudioPlayed===0)
+        {
+            gameOver.play();
+            gameOverAudioPlayed=1;
+        }
+      
     }
 
 
@@ -124,6 +139,22 @@ function Game(passedCanvas)
         checkCollision();
     }
 
+    function render()
+    {
+        clearCanvas();
+        backgroundSlider();
+        drawRocks();
+        if(bulletsArray.length>0)
+        {
+            drawBullets();
+        }
+        drawPlayer();
+        drawScoreBoard();
+        drawHealthBar();
+        mainPowerBar();
+    }
+
+    //checking buttet collision with rocks
     function checkBulletCollision()
     {
         for(var i=0;i<bulletsArray.length;i++)
@@ -145,6 +176,8 @@ function Game(passedCanvas)
             }
         }
     }
+
+    //checking collision with rocks
     function checkCollision()
     {
         for(var i=0;i<rock.length;i++)
@@ -185,6 +218,8 @@ function Game(passedCanvas)
         }
     }
 
+
+    //updating position of rock
     function updateRocks()
     {
         for(var i=0;i<rock.length;i++)
@@ -200,23 +235,7 @@ function Game(passedCanvas)
     }
 
 
-
-    function render()
-    {
-        clearCanvas();
-        backgroundSlider();
-        drawRocks();
-        if(bulletsArray.length>0)
-        {
-            drawBullets();
-        }
-        drawPlayer();
-        drawScoreBoard();
-        drawHealthBar();
-        mainPowerBar();
-    }
-
-
+    //increasing main power bar 
     function mainPowerBar()
     {
         ctx.strokeStyle='s#FFFFFF';
@@ -263,8 +282,7 @@ function Game(passedCanvas)
     
    function drawPlayer()
     {
-     //   if(zitterAnimation===0)
-       // {
+  
             context.drawImage(bat.element,
                 bat.spriteIndex*bat.spriteWidth,
                 0,
@@ -274,7 +292,6 @@ function Game(passedCanvas)
                 bat.y,
                 120,
                 120 );
-        //}
   
 
         if(bat.dashAction===1)
@@ -463,11 +480,11 @@ function bullets(x,y,imageWidth,imageHeight,source)
 {
     this.x=x;
     this.y=y;
-    this.imageWidth=imageWidth;
-    this.imageHeight=imageHeight;
     this.element=new Image();
     this.element.src=source;
-
+    this.imageWidth=imageWidth;
+    this.imageHeight=imageHeight;
+   
 
     this.bulletUpdate=function()
     {
