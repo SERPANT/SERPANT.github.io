@@ -1,0 +1,39 @@
+.container{
+  width: 1440px;
+  margin: 0 auto;
+}
+
+header{
+  background: #ffcccc;
+}
+
+.contact-login{
+  padding-top: 13px;
+  padding-bottom: 7px;
+  padding-left: 75px;
+  padding-right: 75px;
+}
+
+.navbar-icon-socialmedia-dropdown{
+  background: white;
+}
+
+.white{
+  background: white;
+  margin-top: 31px;
+}
+
+.contact-login-color{
+  background: #ff9999;
+}
+
+.main-body{
+  margin-top: -5px;
+}
+
+.customer-say-rectangle
+{
+ 
+  background: #cccc99;
+  margin-top: 56px;
+}

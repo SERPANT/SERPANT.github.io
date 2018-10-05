@@ -1,0 +1,15 @@
+*{
+  margin:0px;
+  padding:0px;
+}
+
+.clearfix {
+  overflow: auto;
+}
+
+a{
+  text-decoration: none;
+  margin:0px;
+  padding:0px;
+  position: relative;
+}
