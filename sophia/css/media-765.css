@@ -1,0 +1,154 @@
+@media only screen and (max-width: 765px) {
+
+  .container{
+    width: 47.8125em;
+    overflow: hidden;
+  }
+
+  .navbar-container{
+    display: none;
+  }
+
+  .footer-container{
+    width: 47.8125em;
+    overflow: hidden;
+  }
+
+  .whiteTriangle{
+    display: none;
+  }
+
+  .customer2{
+    display: none;
+  }
+
+  .whiteTriangle2{
+    display: none;
+  }
+
+  .socialMedia-dropdown{
+    display: none;
+  }
+
+  .contact-no{
+    display: none;
+  }
+
+  .customer1{
+    width: 100%;
+  }
+
+  .HandPicked-title,.Brand-title{
+    background-image:url(../images/handpikedbg765.png);
+  }
+
+  .links-inline1{
+    display: list-item;
+  }
+
+  .offer-list-item2{
+    display: list-item;
+  }
+
+  .offer-list-item1{
+    width: 100%;
+    background-repeat: no-repeat
+  }
+
+  .offer-list-item2{
+    width: 100%;
+    margin-top: 20px;
+    }
+
+    .offer-list-item3{
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    .offer-container ul{
+      margin-left: 85px;
+    }
+
+    .HandPicked-item-container{
+      margin-left: 27%;
+    }
+
+    .HandPicker-item{
+      display: inline-block;
+    }
+
+    .handpicker-list-column2{
+      display: none;
+    }
+
+    .handpicker-list-column3{
+      margin-left: 0px;
+    }
+
+    .summer-collection-list2{
+      display: none;
+    }
+   
+
+    .navbar-icon{
+      width: 62%;
+    }
+
+
+    .summer-Collection-list-container{
+      margin-left: 50px;
+      margin-right: 50px;
+    }
+
+    .summer-list-item{
+      margin-left: 0px;
+    }
+
+    .summer-Collection-list-container ul{
+      margin-left: 14px;
+    }
+
+    .footer-upper-left{
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .footer-upper-left ul{
+      width: 100%;
+      overflow: hidden
+    }
+
+    .footer-upper-right{
+      width: 100%;
+      margin-top: 50px;
+      overflow: hidden;
+      margin-left:55px;
+    }
+
+
+    .email-box-container{
+      width: 364.46px;
+    }
+
+    .customer-say-rectangle{
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .footer-upper{
+      overflow: hidden;
+    }
+
+    .footer-social-icon-list, .subscribe-class,.email-box-container{
+      margin-top: 25px;
+    }
+
+  .footer-lower{
+    margin-left:55px;
+    overflow: hidden;
+  }
+
+  .top-header-links{
+    width: 100%;
+  }
+}

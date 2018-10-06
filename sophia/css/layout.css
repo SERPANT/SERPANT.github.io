@@ -1,7 +1,15 @@
 .container{
-  width: 1440px;
+  width: 90em;
   margin: 0 auto;
 }
+
+.footer-container{
+  width: 90em;
+  margin: 0 auto;
+  background: black;
+ 
+}
+
 
 header{
   background: #ffcccc;
@@ -16,6 +24,7 @@ header{
 
 .navbar-icon-socialmedia-dropdown{
   background: white;
+  width: 100%;
 }
 
 .white{
@@ -36,4 +45,36 @@ header{
  
   background: #cccc99;
   margin-top: 56px;
+  padding-bottom: 48px;
 }
+
+.footer-upper{
+background: rgb(15, 15, 15);
+padding-top: 65px;
+width: 100%;
+}
+
+.footer-lower{
+  background: black;
+  margin-left: 75px;
+}
+
+
+.footer-upper-left{
+  width: 45.972222222%;
+  margin-left: 80px;
+  float: left;
+}
+
+.footer-upper-right{
+  float: left;
+  color: white;
+  margin-left: 122px;
+  width: 25.3083333%;
+}
+
+.slider-border{
+  padding-right: 15px;
+  background: #cc6666
+}
+

@@ -11,9 +11,13 @@
   <link rel="stylesheet" href="css/reset.css"/>
   <link rel="stylesheet" href="css/layout.css"/>
   <link rel="stylesheet" href="css/style.css"/>
+  
+  <link rel="stylesheet" href="css/media-765.css"/>
+  <link rel="stylesheet" href="css/media-400.css"/>
+ 
 </head>
 <body>
-    <header class="clearfix">
+    <header>
       <div class="contact-login-color">
       <div class="container">
           <div class="contact-login clearfix">
@@ -32,9 +36,10 @@
             </div>
           </div>
         </div>
-          <div class="white clearfix">
+     
+          <div class="white ">
           <div class="container">
-          <div class="navbar-icon-socialmedia-dropdown">
+          <div class="navbar-icon-socialmedia-dropdown clearfix">
               <div class="navbar-icon ">
                 <div class="navbar-container">
                   <ul class="no-list nav-list">
@@ -46,6 +51,8 @@
                 </div>
                 <div class="title"><a href="#">Shophia</a></div>
               </div>
+
+
               <div class="socialMedia-dropdown">
                 <div class="socialMedia">
                   <ul class="no-list">
@@ -73,13 +80,15 @@
           </div>
         </div>
       </div>
+    
     </header>
 
     <div class="main-body">
+      
       <div class="container">
-         
+        
         <!--started slider -->
-            <div class="clearfix" style="position: relative; margin:0 auto ; width: 1440px; overflow: hidden;">
+            <div class="slider-position-div">
       
               <div class="slider-container" >
                   <ul class="slider-list">
@@ -88,6 +97,7 @@
                       <li> <a href="#"><img src="images/sliderImage.png"/></a></li> 
                       <li> <a href="#"> <img src="images/sliderImage.png"/></a></li> 
                   </ul>
+               
               </div>
               
               <div class="slider-boxes" ></div>
@@ -95,8 +105,9 @@
 
           </div>
           <!--ended slider -->
+       
 
-
+        
           <!--offer part start-->
           <div class="offer-container">
             <ul class="no-list">
@@ -140,6 +151,7 @@
               
             </ul>
           </div>
+       
             <!--offer part end-->
         
 
@@ -153,30 +165,46 @@
                   <ul class="no-list ">
 
                     <li style="display: inline-block">
-                    <ul class="no-list HandPicker-item-list">
-                      <li class="HandPicker-item">
-                        <div>
-                          <img src="images/handpicked-item1.jpg"/>
 
+
+                    <ul class="no-list HandPicker-item-list">
+
+                      <li class="HandPicker-item">
+                        <div style="position: relative">
+                          <img src="images/handpicked-item1.jpg"/>
+                          <div class="handpicked-item-hover">
+                            <a href="#"><img   src="images/button.jpg" class="submit-button2"/></a>
+                          </div>
+                          <div class="handpicked-item-no-hover"></div>
                         </div>
                       </li>
 
                       <li class="HandPicker-item extra-spacing">
-                          <div>
+                          <div style="position: relative">
                             <img src="images/handpicked-item2.jpg"/>
-  
+                            <div class="handpicked-item-hover">
+                                <a href="#"><img   src="images/button.jpg" class="submit-button2"/></a>
+                            </div>
+                            
+                            <div class="handpicked-item-no-hover"></div>
                           </div>
                         </li>
+
+
                     </ul>
                   </li>
 
 
-                  <li style="display: inline-block; margin-left: 15px;">
+                  <li class="handpicker-list-column2">
+                    
                       <ul class="no-list HandPicker-item-list">
-                        <li >
-                          <div>
+                        <li class="HandPicker-item2">
+                          <div style="position: relative">
                             <img src="images/handpicked-item3.jpg"/>
-  
+                            <div class="handpicked-item-hover2">
+                                <a href="#"><img   src="images/button.jpg" class="submit-button3"/></a>
+                            </div>
+                            <div class="handpicked-item-no-hover2"></div>
                           </div>
                         </li>
   
@@ -186,19 +214,30 @@
 
 
 
-                    <li style="display: inline-block; margin-left: 10px;">
+                    <li class="handpicker-list-column3">
                         <ul class="no-list HandPicker-item-list">
                           <li class="HandPicker-item">
-                            <div>
+
+                            <div style="position: relative">
                               <img src="images/handpicked-item4.jpg"/>
-    
+
+                              
+                              <div class="handpicked-item-hover">
+                                <a href="#"><img   src="images/button.jpg" class="submit-button2"/></a>
+                              </div>
+                              <div class="handpicked-item-no-hover"></div>
                             </div>
                           </li>
     
                           <li class="HandPicker-item extra-spacing">
-                              <div>
+                              <div style="position: relative">
                                 <img src="images/handpicked-item5.jpg"/>
-      
+                                <div class="handpicked-item-hover">
+                                  <a href="#"> <img   src="images/button.jpg" class="submit-button2"/></a>
+                                </div>
+
+                                <div class="handpicked-item-no-hover"></div>
+                              
                               </div>
                             </li>
                         </ul>
@@ -210,7 +249,7 @@
                 </div>
             </div>
 
-            <!--hand picked start-->
+            <!--hand picked end-->
 
             <div class="Summer-Collection-container">                 <!--mistake design-->
 
@@ -219,32 +258,85 @@
                 <div class="summer-Collection-list-container">
                   <ul class="no-list">
                     <li class="links-inline2">
-                      <img src="images/summer1.jpg" alt="summer1">
+                      <div style="position:relative">
+                         <img src="images/summer1.jpg" alt="summer1">
+                         <div class="add-to-cart">
+                            <a href="#"> <img  src="images/add-to-cart.png" class="add-to-cart-image"/></a>
+                          </div>
+                          <div class="percent-off">
+                              <a href="#"> <img  src="images/20%off.png" class="percent-off-image"/></a>
+                          </div>
+                    </div>
                     </li>
                     <li class="links-inline2 summer-list-item">
-                        <img src="images/summer2.jpg" alt="summer2">
+                      <div style="position:relative">  
+                         <img src="images/summer2.jpg" alt="summer2">
+                         <div class="add-to-cart">
+                            <a href="#"> <img   src="images/add-to-cart.png" class="add-to-cart-image"/></a>
+                          </div>
+                          
+                        </div>
                     </li>
                     <li class="links-inline2 summer-list-item">
+                      <div style="position:relative">
                         <img src="images/summer3.jpg" alt="summer2">
+                        <div class="add-to-cart">
+                            <a href="#"> <img   src="images/add-to-cart.png" class="add-to-cart-image"/></a>
+                          </div>
+                      </div>
                     </li>
                     <li class="links-inline2 summer-list-item">
+                      <div style="position:relative">  
                         <img src="images/summer4.jpg" alt="summer2">
+                        <div class="add-to-cart">
+                            <a href="#"> <img   src="images/add-to-cart.png" class="add-to-cart-image"/></a>
+                          </div>
+                          <div class="percent-off">
+                              <a href="#"> <img  src="images/40%off.png" class="percent-off-image"/></a>
+                          </div>
+                      </div>
                     </li>
                   </ul>
                  
 
                   <ul class="no-list summer-collection-list2">
                       <li class="links-inline2 ">
+                        <div style="position: relative">
                         <img src="images/summer5.jpg" alt="summer1">
+                        <div class="add-to-cart">
+                            <a href="#"> <img   src="images/add-to-cart.png" class="add-to-cart-image"/></a>
+                          </div>
+                          <div class="percent-off">
+                              <a href="#"> <img  src="images/20%off.png" class="percent-off-image"/></a>
+                          </div>
+                        </div>
                       </li>
                       <li class="links-inline2 summer-list-item">
+                          <div style="position: relative">
                           <img src="images/summer6.jpg" alt="summer2">
+                          <div class="add-to-cart">
+                              <a href="#"> <img   src="images/add-to-cart.png" class="add-to-cart-image"/></a>
+                            </div>
+                          </div>
                       </li>
                       <li class="links-inline2 summer-list-item">
+                          <div style="position: relative">
                           <img src="images/summer7.jpg" alt="summer2">
+                          <div class="add-to-cart">
+                              <a href="#"> <img   src="images/add-to-cart.png" class="add-to-cart-image"/></a>
+                            </div>
+                          </div>
                       </li>
                       <li class="links-inline2 summer-list-item">
+                          <div style="position: relative">
                           <img src="images/summer4.jpg" alt="summer2">
+                          <div class="add-to-cart">
+                              <a href="#"> <img   src="images/add-to-cart.png" class="add-to-cart-image"/></a>
+                            </div>
+                            <div class="percent-off">
+                                <a href="#"> <img  src="images/40%off.png" class="percent-off-image"/></a>
+                            </div>
+                          </div>
                       </li>
                     </ul>
                 </div>
@@ -259,8 +351,8 @@
                     <li  class="links-inline2 brand-item"><img src="images/not2.png"></li>
                     <li  class="links-inline2 brand-item"><img src="images/not6.png"></li>
                     <li  class="links-inline2 brand-item"><img src="images/not3.png"></li>
-                    <li  class="links-inline2 brand-item"><img src="images/not4.png"></li>
-                    <li  class="links-inline2 brand-item"><img src="images/not5.png"></li>
+                    <li  class="links-inline2 brand-item "><img src="images/not41.png"></li>
+                    <li  class="links-inline2 brand-item "><img src="images/not51.png"></li>
                   </ul>
                 </div>
             </div>
@@ -271,11 +363,14 @@
                 <div class="customer-say-rectangle clearfix">
                     <div class="whiteTriangle2" ><img src="images/triangleImage.png"/></div>
 
+                    <!--customer 1 start-->
                     <div class="customer1">
                       <div class="customer-image"> 
                         <img src="images/customer1.png"/>
                       </div>
-                      <div class="customer-name-word">
+
+
+                      <div class="customer-name-word clearfix">
                         <div class="customer-word">
                           <p>
                             Sed ut perspiciatis <br>
@@ -283,10 +378,38 @@
                               voluptatem accusantium doloremque 
                           </p>
                         </div>
-                        <div></div>
+                        <div class="customer-name-designation">
+                          <div class="customer-name">Sandra Dewi</div>
+                          <div class="customer-designation">FASHION STYLISH</div>
+                        </div>
                       </div>
                     </div>
-                    <div class="customer2"></div>
+                    <!--customer 1 end-->
+
+
+                    <div class="customer2">
+
+
+                     <div class="customer-name-word2">
+                       <div class="customer-word2">
+                          <p>
+                              Sed ut perspiciatis <br>
+                                unde omnis iste natus error sit <br>
+                                voluptatem accusantium doloremque 
+                            </p>
+                       </div>
+                       <div class="customer-name-designation2">
+                          <div class="customer-name" >Shaheer Sheikh</div>
+                          <div class="customer-designation" >DESIGNER</div>
+                       </div>
+                      
+                     </div>
+
+                     <div class="customer-image2"> 
+                        <img src="images/customer2.png"/>
+                      </div>
+
+                    </div>
                 </div>
             </div>
 
@@ -294,7 +417,118 @@
     </div>
 
     <footer>
-      <div class="container">
+      <div class="footer-container">
+
+        <div class="footer-upper clearfix">
+          <div class="footer-upper-left">
+            <ul class="no-list" >
+
+
+              <li class="links-inline2">
+              <ul class="no-list">
+                <li class="footer-upper-left-title">SHOPS</li>
+                <li class="footer-upper-left-item dis-from-title"><a href="#">New In</a></li>
+                <li class="footer-upper-left-item step-dis"><a href="#" >Women</a></li>
+                <li class="footer-upper-left-item step-dis"><a href="#">Men</a></li>
+                <li class="footer-upper-left-item step-dis"><a href="#">Shoes</a></li>
+                <li class="footer-upper-left-item step-dis"><a href="#">Bags & Accessories</a></li>
+                <li class="footer-upper-left-item step-dis"><a href="#">Top Brands</a></li>
+                <li class="footer-upper-left-item step-dis"><a href="#">Sale & Special Offers</a></li>
+                <li class="footer-upper-left-item step-dis"><a href="#">Lookbook</a></li>
+              </ul>
+            </li>
+              
+
+
+          <li class="links-inline2 extra-footer-left-list-distance">
+              <ul class="no-list">
+                  <li class="footer-upper-left-title">INFORMATION</li>
+                  <li class="footer-upper-left-item dis-from-title"><a href="#">About us</a></li>
+                  <li class="footer-upper-left-item step-dis"><a href="#">Customer Service</a></li>
+                  <li class="footer-upper-left-item step-dis"><a href="#">New Collection</a></li>
+                  <li class="footer-upper-left-item step-dis"><a href="#">Best Sellers</a></li>
+                  <li class="footer-upper-left-item step-dis"><a href="#">Manufactures</a></li>
+                  <li class="footer-upper-left-item step-dis"><a href="#">Privacy policy</a></li>
+                  <li class="footer-upper-left-item step-dis"><a href="#"> Terms & condition</a></li>
+                  <li class="footer-upper-left-item step-dis"><a href="#">Blog</a></li>
+            
+                </ul>
+              </li>
+
+
+
+            <li class="links-inline2 extra-footer-left-list-distance">
+              <ul class="no-list">
+                  <li class="footer-upper-left-title">CUSTOMER SERVICE</li>
+                  <li class="footer-upper-left-item dis-from-title"><a href="#">Search Terms</a></li>
+                  <li class="footer-upper-left-item step-dis"><a href="#">Advanced Search</a></li>
+                  <li class="footer-upper-left-item step-dis"><a  href="#">Order and Retruns</a></li>
+                  <li class="footer-upper-left-item step-dis"><a  href="#">Contact Us</a></li>
+                  <li class="footer-upper-left-item step-dis"><a  href="#" >RSS</a></li>
+                  <li class="footer-upper-left-item step-dis"><a  href="#">Help & FAQs</a></li>
+                  <li class="footer-upper-left-item step-dis"><a  href="#">Consultant</a></li>
+                  <li class="footer-upper-left-item step-dis"><a  href="#">Store Locations</a></li>
+                </ul>
+              </li>
+
+
+            </ul>
+          </div>
+
+
+          <div class="footer-upper-right">
+
+         
+            <div>STAY CONNECTED</div>
+            <div>
+              <ul class="no-list footer-social-icon-list">
+                <li class="links-inline2 social-icon-footer-item-top"> <i class="fa fa-facebook" aria-hidden="true"></i></li>
+                <li class="links-inline2 social-icon-footer-item"> <i class="fa fa-twitter" aria-hidden="true"></i></li>
+                <li class="links-inline2 social-icon-footer-item"> <i class="fa fa-pinterest" aria-hidden="true"></i></li>
+                <li class="links-inline2 social-icon-footer-item"> <i class="fa fa-instagram" aria-hidden="true"></i></li>
+                <li class="links-inline2 social-icon-footer-item"> <i class="fa fa-rss" aria-hidden="true"></i></li>
+              </ul>
+            </div>
+            <div class="subscribe-class">SUBSCRIBE  <span class="italic">in</span>  OUR  NEWS  LETTER</div>
+            
+            <div class="email-box-container">
+                <input type="text" class="email-box" placeholder="Enter Your Email Address"/>
+                <button><span>SUBSCRIBE</span></button>
+            </div>
+            
+          </div>
+
+
+        </div>
+        <div class="horizontal-Line"><img src="images/footerHorline.png"/></div>
+
+
+        
+        <div class="footer-lower">
+          <div class="clearfix">
+             <div class="copy-right">
+                <p>
+              © 2015  Shopia  Fashion Store Shopify. <br>
+              All Rights Reserved. Ecommerce Software by Shopify.<br>
+              Designed by  MoccaLabs.com
+            </p>
+          </div>
+          <div class="goto-top">
+            <a href="#"><img src="images/upbutton.png"/></a>
+          </div>
+        </div>
+       
+        <div class="card-icon">
+          <ul class="no-list">
+            <li class="links-inline2 card-item"><img src="images/visa.png"/></li>
+            <li  class="links-inline2 card-item"><img src="images/master.png"/></li>
+            <li  class="links-inline2 card-item"><img src="images/icon3.png"/></li>
+            <li  class="links-inline2 card-item"><img src="images/discover.png"/></li>
+          </ul>
+        </div>
+
+
+        </div>
       </div>
     </footer>
 

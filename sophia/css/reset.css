@@ -13,3 +13,18 @@ a{
   padding:0px;
   position: relative;
 }
+
+select {
+ 
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: '';
+}
+
+
+
+
+select:focus{
+  outline: none
+}
