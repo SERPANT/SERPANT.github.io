@@ -1,8 +1,272 @@
 @media only screen and (max-width: 400px) {
 
+
+  .container{
+    width: 25em
+  }
+
+  .footer-container{
+    width: 25em
+  }
+
+
+
   .contact-login-color
   {
     display: none
   }
+
+  .title{
+    font-size: 40px;
+    margin-top: 5px;
+  }
+
+  .slider-position-div
+  {
+    display: none;
+  }
+
+  .offer-container ul{
+    margin-left: 5px;
+  }
+
+  .offer-container{
+    margin-left: 10px;
+  }
+
+  .offer-title{
+    font-size: 20px;
+
+  }
+
+  .offer-icon{
+   font-size: 40px;
+  }
+  
+
+  .HandPicked-title,.Brand-title{
+    
+    background-image:none;
+    margin-left: 5px;
+  }
+
+
+  .HandPicked-item-container{
+
+    margin-left: 5px;
+    margin-right: 5px;
+ 
+  }
+
+  .HandPicker-item{
+    width: 202px;
+    overflow: hidden;
+  }
+  
+  .HandPicker-item div img{
+    width: 125px;
+    cursor: pointer;
+  }
+
+  .handpicker-list-column3{
+    display: inline-block; margin-left: 0px;
+    }
+
+    .handpicked-item-hover
+    {
+      width: 105px;
+      height: 100px ;
+      top:10px; 
+      left: 10px; 
+    }
+
+    .handpicked-item-no-hover{
+        width: 105px;
+    height: 100px ;
+    top:10px; 
+    left: 10px; 
+    }
+
+   
+
+    .HandPicker-item-list{
+      width: 125px;
+    }
+
+   
+  .HandPicked-item-container{
+    position: relative;
+  }
+   
+
+    .onlymobile{
+      position: absolute;
+      display: block;
+      top:0px;
+      left:135px;
+    }
+
+    .onlymobile  a img {
+      width: 250px;
+      height: 550px;
+    }
+
+    .summer-collection-image{
+      width: 150px;
+    }
+
+    .summer-Collection-list-container{
+      padding-top:15px;
+      padding-bottom:15px;
+      padding-left:10px;
+      margin-top: 61px;
+      border-style: none;
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+
+    .add-to-cart{
+      position: absolute;
+      top:145px;
+      left:10px;
+    }
+
+    .add-to-cart a img{
+      width: 130px;
+    }
+   
+
+    .percent-off-image
+    {
+      width: 50px;
+    }
+
+    .brand-item{
+      margin-left: 10px;
+    }
+
+    .brand-item img{
+      width: 100px;
+    }
+
+    .brand-list-container{
+      margin-left: 5px;
+    }
+
+    .brand-list{
+      margin-top: 35px;
+    }
+
+    .customer-image img{
+      width: 150px;
+    }
+    
+    .customer1{
+      margin-left: 5px;
+    }
+
+
+    .customer-word p{
+      font-size: 15px;
+      line-height: 18px;
+      margin:0px;
+      
+      }
+    
+
+      .customer-name-designation{
+        margin-top: 15px;
+        margin-left: 15px;
+      }
+  
+
+      .customer-name{
+        font-size: 15px;
+     
+      }
+
+      .customer-designation{
+        font-size: 12px;
+  
+        margin-top:5px;
+      
+      }
+
+
+      .extra-footer-left-list-distance
+      {
+      margin-left: 55px;
+      }
+
+
+      .footer-upper-left{
+       
+        margin-left: 20px;
+    
+      }
+
+      .dis-from-title{
+        margin-top: 18px;
+      }
+   
+
+      .footer-upper-right{
+
+        margin-left: 25px;
+      }
+  
+
+      .email-box-container{
+        width: 75%;
+      }
+      
+      .email-box-container input{
+        width:66%;
+        
+      }
+
+
+      .horizontal-Line{
+   
+        margin-left: 10px;
+      }
+
+      .footer-lower{
+        margin-left: 15px;
+      }
+
+      .goto-top{
+        margin-right: 10px;
+    
+      }
+
+      .footer-lower div{
+        width: 100%;
+      }
+
+      .navbar-icon-socialmedia-dropdown{
+        background: #ff9999;
+      }
+      
+      .white{
+        margin-top: 0px;
+      }
+
+      .submit-button2{
+        display: block;
+    
+      margin-top: 0px;
+      margin-left: 0px;
+      }
+      
+
+      .handpicked-item-hover a img{
+        width: 70px;
+      }
+
+      .customer-service{
+        margin-left: 0px;
+        margin-top: 25px;
+      }
 }
 
