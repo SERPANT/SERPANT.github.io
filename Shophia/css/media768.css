@@ -1,0 +1,211 @@
+@media only screen and (max-width: 768px) {
+  .main-container {
+    max-width: 48em;
+    overflow: hidden;
+  }
+
+  .reset-body {
+    overflow: hidden;
+  }
+
+  .contact {
+    width: 20.07751938%;
+  }
+
+  .nav-item a {
+    font-size: 12px;
+  }
+
+  .nav-bar {
+    margin-top: 5px;
+    width: 100%;
+    float: none;
+    text-align: center;
+  }
+
+  .slider {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .socialMedia {
+    display: none;
+  }
+
+  .icon {
+    font-size: 52px;
+    margin-top: 20px;
+    float: none;
+    text-align: center;
+  }
+
+  .offer-icon {
+    float: left;
+  }
+
+  .offer-text {
+    float: left;
+    margin-left: 20px;
+  }
+
+  .offer-one {
+    width: 100%;
+    padding-left: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
+  .offer-two {
+    width: 100%;
+    padding-left: 0px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
+  .offer-three {
+    width: 100%;
+    padding-left: 40px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
+  .offer-title {
+    font-size: 18px;
+  }
+
+  .offer-detail {
+    font-size: 10px;
+  }
+
+  .offer-icon {
+    font-size: 28px;
+  }
+
+  .offer-one-list {
+    background-image: url(../images/offerimage1768.png);
+    background-repeat: no-repeat;
+  }
+
+  .offer-two-list {
+    background-image: url(../images/offerimage2768.png);
+    margin-left: -20px;
+  }
+
+  .offer-three-list {
+    margin-left: -20px;
+    background-image: url(../images/offerimage3768.png);
+  }
+
+  .handpicker-list-column1 {
+    width: 30.33%;
+  }
+
+  .handpicker-list-column2 {
+    width: 35.33%;
+  }
+
+  .handpicker-list-column3 {
+    width: 30.33%;
+  }
+
+  .handpicked-item-hover {
+    width: 88.3%;
+    height: 84.78802%;
+    top: 12px;
+    left: 8px;
+  }
+
+  .handpicked-item-no-hover {
+    width: 88.3%;
+    height: 84.78802%;
+    top: 12px;
+    left: 8px;
+  }
+
+  .handpicked-item-hover2 {
+    width: 90.3%;
+    height: 92.39853301%;
+    top: 16px;
+    left: 9px;
+  }
+
+  .handpicked-item-no-hover2 {
+    width: 90.3%;
+    height: 92.39853301%;
+    top: 16px;
+    left: 9px;
+  }
+
+  .brand-item1 {
+    margin-left: 40px;
+  }
+
+  .brand-item2 {
+    margin-left: 40px;
+  }
+
+  .brand-item3 {
+    margin-left: 40px;
+  }
+
+  .brand-list li {
+    width: 25.80620155%;
+  }
+
+  .customer1 {
+    float: none;
+    margin-left: 15px;
+    margin-top: 37px;
+    width: 75%;
+  }
+
+  .customer2 {
+    float: none;
+    margin-top: 15px;
+    width: 75%;
+    float: right;
+  }
+
+  .summer-list-item {
+    width: 300px;
+  }
+
+  .brand-item5 {
+    margin-left: 23px;
+    width: 14.0620155%;
+  }
+
+  .brand-item4 {
+    margin-left: 50px;
+    width: 14.0620155%;
+  }
+
+  .customer-name-word {
+    float: right;
+    margin-top: 16px;
+    margin-left: 15px;
+  }
+
+  .footer-upper-left {
+    float: none;
+    width: 100%;
+  }
+
+  .footer-upper-right {
+    float: none;
+    margin-top: 50px;
+    width: 100%;
+  }
+
+  .triangle2 {
+    display: none;
+  }
+
+  .nav-icon {
+    width: 100%;
+  }
+
+  .sub-groups {
+    background: url(../images/handpikedbg765.png);
+  }
+}

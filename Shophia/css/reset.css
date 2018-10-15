@@ -1,0 +1,23 @@
+*{
+  margin:0px;
+  padding:0px;
+}
+
+a{
+  text-decoration: none;
+}
+
+.clearfix {
+  overflow: auto;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: '';
+}
+
+select:focus{
+  outline: none
+}

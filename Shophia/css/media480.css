@@ -1,0 +1,226 @@
+@media only screen and (max-width: 480px) {
+  .main-container {
+    width: 30em;
+    overflow: hidden;
+  }
+
+  .contact {
+    display: none;
+  }
+
+  .login {
+    width: 100%;
+  }
+
+  .dashed-before::before {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .nav-bar {
+    margin-top: 5px;
+    width: 100%;
+    float: none;
+  }
+
+  .icon {
+    float: none;
+  }
+
+  .nav-icon {
+    width: 100%;
+    padding-left: 0px;
+  }
+
+  .offer-text {
+    float: left;
+    margin-left: 20px;
+  }
+
+  .offer-one {
+    width: 100%;
+    padding-left: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
+  .offer-two {
+    width: 100%;
+    padding-left: 0px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
+  .offer-title {
+    font-size: 15px;
+  }
+
+  .offer-detail {
+    font-size: 10px;
+  }
+
+  .offer-icon {
+    font-size: 15px;
+  }
+
+  .offer-one-list {
+    width: 45%;
+    background-image: url(../images/offerimage1768.png);
+    background-repeat: no-repeat;
+  }
+
+  .offer-two-list {
+    width: 45%;
+    background-image: url(../images/offerimage2768.png);
+    margin-left: 0px;
+  }
+
+  .offer-three-list {
+    display: none;
+  }
+
+  .rest-body {
+    margin-top: 12px;
+  }
+
+  .handpicker-list-column1 {
+    width: 29.33%;
+  }
+
+  .handpicker-list-column2 {
+    width: 32.33%;
+  }
+
+  .handpicker-list-column3 {
+    width: 29.33%;
+  }
+
+  .handpicked-item-hover {
+    top: 6px;
+    left: 6px;
+  }
+
+  .handpicked-item-no-hover {
+    top: 6px;
+    left: 6px;
+  }
+
+  .handpicked-item-hover2 {
+    top: 6px;
+    left: 5px;
+  }
+
+  .handpicked-item-no-hover2 {
+    top: 6px;
+    left: 5px;
+  }
+
+  .sub-groups {
+    font-size: 20px;
+  }
+
+  .handpicked-container {
+    margin-top: 38px;
+  }
+
+  .handpickedImage2 {
+    height: 270px;
+  }
+
+  .summer-collection-image {
+    width: 100%;
+  }
+
+  .summer-collection-list1,
+  .summer-collection-list2 {
+    width: 48%;
+  }
+
+  .summer-collection-list2,
+  .summer-collection-list1 {
+    display: inline-block;
+  }
+
+  .add-to-cart {
+    position: absolute;
+    top: 193px;
+    left: 40px;
+    width: 66.333333333%;
+  }
+
+  .brand-item {
+    margin-left: 28px;
+  }
+
+  .brand-list {
+    margin-top: 40px;
+  }
+
+  .brand-list li {
+    width: 25.80620155%;
+  }
+
+  .brand-item1 {
+    margin-left: 25px;
+  }
+
+  .brand-item2 {
+    margin-left: 25px;
+  }
+
+  .brand-item3 {
+    margin-left: 25px;
+  }
+
+  .customer1 {
+    float: left;
+    margin-left: 5px;
+    margin-top: 37px;
+    width: 100%;
+  }
+
+  .customer2 {
+    display: none;
+  }
+
+  .customer-word p {
+    font-size: 14px;
+  }
+
+  .customer-name {
+    font-size: 20px;
+    width: 100%;
+  }
+
+  .customer-designation {
+    font-size: 12px;
+    margin-top: 15px;
+    width: 100%;
+  }
+
+  .customer-name-word {
+    margin-top: 36px;
+    margin-left: 15px;
+    width: 52.64184233%;
+  }
+
+  .summer-list-item {
+    width: 193.63px;
+  }
+
+  .brand-item4 {
+    margin-left: 23px;
+    width: 14.0620155%;
+  }
+
+  .extra-footer-left-list-distance {
+    margin-left: 10.58181818%;
+  }
+
+  .customer-service {
+    display: none;
+  }
+  .sub-groups {
+    background: url(../images/handpikedbg480.png);
+  }
+}
