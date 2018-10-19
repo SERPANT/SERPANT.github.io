@@ -1,0 +1,39 @@
+body {
+    background: #282828
+}
+
+.container{
+    background: #e7e4e6;
+    width: 700px;
+    height: 1000px;
+    margin:0 auto;
+    margin-top: 50px;
+}
+
+.profile_image{
+    height:220px;
+    width: 220px;
+    background: #e9d3c9;
+    margin:50px;
+    margin-top: 10px;
+    position: relative;
+}
+
+#circle_frame
+{
+    width:180px;
+    height: 180px;
+    background: red;
+    border-radius: 80px;
+    position:absolute;
+    top:20px;
+    left: 20px;
+}
+#image
+{
+    height:180px;
+    width: 170px;
+    border-radius: 90px;
+    margin-top: 20px;
+    margin-left: 25px
+}
