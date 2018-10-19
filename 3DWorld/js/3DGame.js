@@ -71,9 +71,9 @@ function Game(canv) {
   };
 
   function makeObjects() {
-    makeRoad();
+    // makeRoad();
     makeWall();
-    makeBuilding();
+    //makeBuilding();
   }
 
   function makeBuilding() {
@@ -97,7 +97,7 @@ function Game(canv) {
 
   function draw() {
     ctx.clearRect(0, 0, 2 * canvasWidth, 2 * canvasHeight);
-    //   drawGround();
+    drawGround();
     drawObjects();
   }
 
