@@ -4,11 +4,13 @@ var camera = function() {
   //assuming any forward and backward movement is z axis movement
 
   this.mousedown = false;
-  this.s = 20;
   var diveRef;
   var standupRef;
   this.directionMovement = [0, 0, 1];
   this.positiony;
+  this.deltaPosition = [0, 0, 0];
+  var minSpeed = 15;
+  this.s = minSpeed;
 
   //here rotation[0]---this is the rotation of x axis
   //then rotation[1]---this is the rotation of y axis
@@ -20,19 +22,47 @@ var camera = function() {
   };
 
   this.resetSpeed = function() {
-    this.s = 20;
+    this.s = minSpeed;
   };
 
-  this.update = function(key) {
+  this.resetDeltaPosition = function(key) {
+    if (key === "KeyE") {
+      this.deltaPosition[1] = 0;
+    }
+    if (key === "KeyQ") {
+      this.deltaPosition[1] = 0;
+    }
+
+    if (key === "KeyW") {
+      this.deltaPosition[0] = 0;
+      this.deltaPosition[2] = 0;
+    }
+    if (key === "KeyS") {
+      this.deltaPosition[0] = 0;
+      this.deltaPosition[2] = 0;
+    }
+    if (key === "KeyA") {
+      this.deltaPosition[0] = 0;
+      this.deltaPosition[2] = 0;
+    }
+    if (key === "KeyD") {
+      this.deltaPosition[0] = 0;
+      this.deltaPosition[2] = 0;
+    }
+  };
+
+  this.keydownUpdate = function(key) {
     if (this.s < 40) {
       this.s += 0.3;
     }
 
     if (key === "KeyE") {
-      this.positon[1] -= this.s;
+      this.deltaPosition[1] = -this.s;
+      //  this.positon[1] -= this.s;
     }
     if (key === "KeyQ") {
-      this.positon[1] += this.s;
+      this.deltaPosition[1] = this.s;
+      //this.positon[1] += this.s;
     }
 
     //this is the movement required so as the insure the correct rotation
@@ -42,23 +72,31 @@ var camera = function() {
 
     //this works as we are still working with increasing the distance and not anything else
     if (key === "KeyW") {
-      this.positon[0] += x;
-      this.positon[2] += y;
+      // this.positon[0] += x;
+      // this.positon[2] += y;
+      this.deltaPosition[0] = x;
+      this.deltaPosition[2] = y;
       this.directionMovement = [0, 0, 1];
     }
     if (key === "KeyS") {
-      this.positon[0] -= x;
-      this.positon[2] -= y;
+      // this.positon[0] -= x;
+      // this.positon[2] -= y;
+      this.deltaPosition[0] = -x;
+      this.deltaPosition[2] = -y;
       this.directionMovement = [0, 0, -1];
     }
     if (key === "KeyA") {
-      this.positon[0] -= y;
-      this.positon[2] += x;
+      // this.positon[0] -= y;
+      // this.positon[2] += x;
+      this.deltaPosition[0] = -y;
+      this.deltaPosition[2] = x;
       this.directionMovement = [-1, 0, 0];
     }
     if (key === "KeyD") {
-      this.positon[0] += y;
-      this.positon[2] -= x;
+      // this.positon[0] += y;
+      // this.positon[2] -= x;
+      this.deltaPosition[0] = y;
+      this.deltaPosition[2] = -x;
       this.directionMovement = [1, 0, 0];
     }
 
@@ -135,5 +173,18 @@ var camera = function() {
       // this.rotation[0] = (this.rotation[0] + y) % 2;
       this.rotation[1] += x; //rotation arround y axis
     }
+  };
+
+  this.updatePosition = function() {
+    this.positon[0] += this.deltaPosition[0];
+    this.positon[1] += this.deltaPosition[1];
+    this.positon[2] += this.deltaPosition[2];
+  };
+
+  this.getFutureLocation = function() {
+    let futureX = this.positon[0] + this.deltaPosition[0];
+    let futureY = this.positon[1] + this.deltaPosition[1];
+    let futureZ = this.positon[2] + this.deltaPosition[2];
+    return [futureX, futureY, futureZ];
   };
 };

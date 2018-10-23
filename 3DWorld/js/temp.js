@@ -104,7 +104,7 @@ function draw() {
 
       ctx.moveTo(face[0][0], face[0][1]);
 
-      // Draw the other vertices
+      // Draw the vector2 vertices
       for (var k = 1, n_vertices = face.length; k < n_vertices; ++k) {
         ctx.lineTo(face[k][0], face[k][1]);
       }
