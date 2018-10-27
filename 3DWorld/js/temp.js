@@ -192,3 +192,87 @@ function makeRoad(y) {
   }
   return arr;
 }
+
+// function dive() {
+//   // this.positon[1] += 20;
+//   // this.positon[2] *= this.s / 100;
+
+//   if (this.positon[1] < this.positiony + 100) {
+//     var DashVector = scale(this.directionMovement, this.s);
+//     DashVector[1] += 14;
+//     this.positon = add(this.positon, DashVector);
+//   } else {
+//     clearDive();
+//   }
+//   // console.log(this.positon[2]);
+// }
+
+// function add(vector1, vector2) {
+//   return [
+//     vector1[0] + vector2[0],
+//     vector1[1] + vector2[1],
+//     vector1[2] + vector2[2]
+//   ];
+// }
+
+// function scale(vector, scale) {
+//   return [vector[0] * scale, vector[1] * scale, vector[2] * scale];
+// }
+
+// function clearDive() {
+//   clearInterval(diveRef);
+//   //standupRef = setInterval(standup.bind(this));
+// }
+
+// function standup() {
+//   if (this.positon[1] > this.positionyy) {
+//     this.positon[1] -= 14;
+//   } else {
+//     clearStandup();
+//   }
+// }
+
+// function clearStandup() {
+//   clearInterval(standupRef);
+// }
+
+// function draw2DMap() {
+//   drawMapBackground();
+//   for (let row = gameMap.length - 1; row >= 0; row--) {
+//     for (let col = gameMap[row].length - 1; col >= 0; col--) {
+//       if (gameMap[row][col] === 1) {
+//         horizontalStroke(gameMap.length - row, col);
+//       } else if (gameMap[row][col] === 5) {
+//         goldenDot(gameMap.length - row, col);
+//       }
+//     }
+//   }
+// }
+
+// function drawMapBackground() {
+//   ctx.rect(
+//     500 - 10,
+//     100 - 10,
+//     gameMap[0].length * 10 + 20,
+//     gameMap.length * 15 + 30
+//   );
+// }
+
+// function horizontalStroke(i, j) {
+//   ctx.moveTo(500 + j * 10, 100 + i * 15);
+//   ctx.lineTo(510 + j * 10, 100 + i * 15);
+//   ctx.strokeStyle = "green";
+//   ctx.lineWidth = 3;
+//   ctx.stroke();
+//   ctx.lineWidth = 1;
+// }
+
+// function goldenDot(i, j) {
+//   ctx.strokeStyle = "gold";
+//   ctx.moveTo(505 + j * 10, 100 + i * 15);
+//   ctx.lineTo(507 + j * 10, 100 + i * 15);
+
+//   ctx.lineWidth = 2;
+//   ctx.stroke();
+//   ctx.lineWidth = 1;
+// }
