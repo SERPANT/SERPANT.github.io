@@ -1,13 +1,13 @@
 class Shape {
   constructor() {
     this.Type;
-    this.color;
     this.angle;
     this.position;
     this.cube = [];
     this.front = 1;
     this.verti = [];
     this.dimension = 0;
+    this.facePattern = [];
     this.directionArr = [];
 
     this.cubeFace = [

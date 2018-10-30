@@ -4,14 +4,17 @@ class Camera {
   //assuming any forward and backward movement is z axis movement
   constructor() {
     this.positiony;
-    this.gravity = 8;
-    this.health = 100;
+    this.gravity = 10;
     this.minSpeed = 20;
+    this.maxHealth = 85;
     this.jumping = false;
     this.s = this.minSpeed;
     this.globalJumpY = -35;
     this.deltaTimeJump = 0.9;
+    this.backgroundStart = 2078;
+    this.health = this.maxHealth;
     this.deltaPosition = [0, 0, 0];
+    this.backgrounRotationSpeed = 380;
     this.directionMovement = [0, 0, 1];
     this.jumpVelocity = [0, this.globalJumpY, 12];
   }
@@ -23,6 +26,7 @@ class Camera {
     this.positon = positon;
     this.rotation = rotation;
     this.positiony = positon[1];
+    this.positon[1] = positon[1] - 1500;
   }
 
   resetSpeed() {
@@ -63,6 +67,8 @@ class Camera {
 
     if (key === "KeyE") {
       this.rotation[1] += 0.03;
+      this.backgroundStart =
+        this.backgroundStart + 0.03 * this.backgrounRotationSpeed;
       if (this.jumping === false) {
         this.jumpVelocity = [
           12 * Math.sin(this.rotation[1]),
@@ -75,6 +81,8 @@ class Camera {
     }
     if (key === "KeyQ") {
       this.rotation[1] -= 0.03;
+      this.backgroundStart =
+        this.backgroundStart - 0.03 * this.backgrounRotationSpeed;
       if (this.jumping === false) {
         this.jumpVelocity = [
           12 * Math.sin(this.rotation[1]),
@@ -146,6 +154,8 @@ class Camera {
 
     // this.rotation[0] = (this.rotation[0] + y) % 2;
     this.rotation[1] += x; //rotation arround y axis
+    this.backgroundStart =
+      this.backgroundStart + x * this.backgrounRotationSpeed;
     if (this.jumping === false) {
       this.jumpVelocity = [
         12 * Math.sin(this.rotation[1]),

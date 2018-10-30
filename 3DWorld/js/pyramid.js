@@ -1,5 +1,5 @@
 class pyramidObject extends Shape {
-  init(pos = [0, 0, 0], color = "red", theta = 0, objectType = 0, size = 10) {
+  init(pos = [0, 0, 0], pattern, theta = 0, objectType = 0, size = 10) {
     this.position = pos;
     this.Type = objectType;
     let c = size;
@@ -17,7 +17,7 @@ class pyramidObject extends Shape {
     this.angle = theta;
     this.initVertices(theta, pos);
 
-    this.color = color;
+    this.facePattern = pattern;
     this.cubeFace = this.makeFace(this.cubeFace);
   }
 

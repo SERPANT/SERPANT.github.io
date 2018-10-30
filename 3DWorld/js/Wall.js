@@ -10,7 +10,6 @@ class Wall extends GameObject {
    */
   makeWall(detail) {
     let angle = detail[5];
-    this.facePattern = detail[7];
 
     if (angle === 0) {
       this.drawHorizontalCube(detail);
@@ -28,11 +27,11 @@ class Wall extends GameObject {
    * @param {*} detail :array specifing [x, y, z, wallWeight, wallHeight, angle of rotation , color, pattern to be drawn]
    */
   drawHorizontalCube(detail) {
-    let [x, y, z, wallW, wallH, angle, color, pattern] = detail;
+    let [x, y, z, wallW, wallH, angle, pattern] = detail;
     for (var i = x; i < x + wallW; i = i + 55) {
       for (var j = y; j < y + wallH; j = j + 55) {
         let cubeOb = new CubeObject();
-        cubeOb.init([i, -j, z], color, angle, 0, 30);
+        cubeOb.init([i, -j, z], pattern, angle, 0, 30);
 
         this.CubeArray.push(cubeOb);
       }
@@ -44,11 +43,11 @@ class Wall extends GameObject {
    * @param {*} detail :array specifing [x, y, z, wallWeight, wallHeight, angle of rotation , color, pattern to be drawn]
    */
   drawVertialCube(detail) {
-    let [x, y, z, wallW, wallH, angle, color, pattern] = detail;
+    let [x, y, z, wallW, wallH, angle, pattern] = detail;
     for (var i = z; i < z + wallW; i = i + 55) {
       for (var j = y; j < y + wallH; j = j + 55) {
         let cubeOb = new CubeObject();
-        cubeOb.init([x, -j, i], color, angle, 5, 30);
+        cubeOb.init([x, -j, i], pattern, angle, 5, 30);
 
         this.CubeArray.push(cubeOb);
       }

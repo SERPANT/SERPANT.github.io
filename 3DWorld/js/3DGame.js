@@ -1,6 +1,5 @@
 class Game {
   constructor() {
-    this.that = this;
     this.ctx;
     this.cam;
     this.canvas;
@@ -9,31 +8,52 @@ class Game {
     this.Footstep;
     this.score = 0;
     this.pointSound;
+    this.won = false;
+    this.that = this;
     this.canvasWidth;
     this.canvasHeight;
     this.objects = [];
     this.pattern = [];
+    this.lifeTImer = 0;
     this.oldmousey = 0;
+    this.running = true;
     this.oldmousex = 735;
+    this.totalStarCount = 0;
+    this.scoreLifeValue = 10;
     this.limitRendering = 400;
+    this.skyBox = new Image();
+    this.pinkBar = new Image();
+    this.blueBar = new Image();
+    this.healthDecreaseInterval;
+    this.brownBar = new Image();
+    this.healthBar = new Image();
     this.scoreTriangleImage = new Image();
     this.enemySpeed = [20, 40, 35, 25, 35];
     this.colorType2 = ["gold", "gold", "gold", "gold", "gold", "gold"];
+    this.colorType3 = ["green", "green", "green", "green", "green", "green"];
+    this.colorType4 = [
+      "#663333",
+      "#663333",
+      "#663333",
+      "#663333",
+      "#663333",
+      "#663333"
+    ];
 
     this.gameMap = [
-      [1, 1, 1, 1, 1, 0, 0, 1],
-      [4, 0, 0, 0, 0, 0, 0, 5],
-      [1, 0, 0, 1, 1, 1, 1, 1],
-      [0, 0, 5, 0, 4, 0, 0, 0],
-      [1, 1, 1, 1, 1, 0, 0, 1],
-      [5, 0, 4, 0, 0, 0, 0, 0],
-      [1, 0, 0, 1, 1, 1, 1, 1],
-      [5, 5, 5, 5, 5, 5, 5, 5]
+      [0, 1, 1, 1, 1, 1, 0, 0, 1, 0],
+      [0, 4, 0, 0, 0, 0, 0, 0, 5, 6],
+      [0, 1, 0, 0, 1, 1, 1, 1, 1, 0],
+      [6, 0, 0, 5, 0, 4, 0, 0, 0, 0],
+      [0, 1, 1, 1, 1, 1, 0, 0, 1, 0],
+      [0, 5, 0, 4, 0, 0, 0, 0, 0, 6],
+      [0, 1, 0, 0, 1, 1, 1, 1, 1, 0],
+      [0, 5, 5, 5, 5, 5, 5, 5, 5, 0]
     ];
 
     this.colorType = [
       "brown",
-      "#ff3333",
+      "brown",
       "#ff6633",
       "#ff3333",
       "brown",
@@ -54,23 +74,38 @@ class Game {
 
     this.makeObjects();
     this.initAudio();
+
+    this.healthDecreaseInterval = setInterval(
+      this.decreaseHealth.bind(this),
+      1000
+    );
+
     this.gameLoop();
   }
 
+  decreaseHealth() {
+    this.cam.health = this.cam.health - 10;
+  }
+
   loadImage() {
-    var texture1 = new Image();
+    let texture1 = new Image();
     texture1.src = "images/texture1.jpg";
-    var texture2 = new Image();
+    let texture2 = new Image();
     texture2.src = "images/texture2.jpg";
-    var texture3 = new Image();
+    let texture3 = new Image();
     texture3.src = "images/texture3.jpg";
-    var texture4 = new Image();
+    let texture4 = new Image();
     texture4.src = "images/texture4.jpg";
-    var texture5 = new Image();
+    let texture5 = new Image();
     texture5.src = "images/texture7.jpg";
-    var texture6 = new Image();
+    let texture6 = new Image();
     texture6.src = "images/texture6.jpg";
-    this.scoreTriangleImage.src = "images/pyramid.png";
+    this.scoreTriangleImage.src = "images/star2.png";
+    this.skyBox.src = "images/background10.png";
+    this.healthBar.src = "images/heart2.png";
+    this.pinkBar.src = "images/pinkbar.png";
+    this.blueBar.src = "images/bluebar.png";
+    this.brownBar.src = "images/brownbar.png";
 
     // texture1.onload = function() {
     //   this.pattern.push(this.ctx.createPattern(texture1, "repeat"));
@@ -114,27 +149,75 @@ class Game {
   // }
 
   gameLoop() {
+    //   if (this.running === true) {
     this.update();
+    // }
+    // } else {
+    //   // this.ctx.clearRect(0, 0, 2 * this.canvasWidth, 2 * this.canvasHeight);
+    //   if (this.won === true) {
+    //     console.log("won");
+    //   } else {
+    //     console.log("failed");
+    //   }
+    // }
     this.draw();
     requestAnimationFrame(this.gameLoop.bind(this));
   }
 
   draw() {
     this.ctx.clearRect(0, 0, 2 * this.canvasWidth, 2 * this.canvasHeight);
+    this.drawBackground();
     this.drawGround();
     this.drawObjects();
-    this.drawStaticStuff();
+    if (this.running === true) {
+      this.drawStaticStuff();
+    }
+  }
+
+  drawBackground() {
+    //  void ctx.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight);
+
+    // this.ctx.drawImage(
+    //   this.skyBox,
+    //   this.cam.backgroundStart,
+    //   0,
+    //   1300,
+    //   900,
+    //   0,
+    //   0,
+    //   1000,
+    //   750
+    // );
+
+    this.ctx.drawImage(
+      this.skyBox,
+      this.cam.backgroundStart,
+      100,
+      2500,
+      1080,
+      0,
+      0,
+      1000,
+      820
+    );
   }
 
   drawStaticStuff() {
     this.drawScore();
+    this.drawHealth();
+    // this.drawTarget();
+  }
+
+  drawHealth() {
+    this.ctx.drawImage(this.brownBar, 728, 33, 86, 28);
+    this.ctx.drawImage(this.pinkBar, 728, 33, this.cam.health, 28);
+    this.ctx.drawImage(this.healthBar, 700, 20, 120, 55);
   }
 
   drawScore() {
-    this.ctx.drawImage(this.scoreTriangleImage, 10, 10, 80, 80);
-    this.ctx.font = "40px Comic Sans MS";
-    this.ctx.fillStyle = "black";
-    this.ctx.fillText(this.score, 90, 55);
+    this.ctx.drawImage(this.brownBar, 880, 33, 86, 28);
+    this.ctx.drawImage(this.blueBar, 880, 34, this.score * 7.818181, 26);
+    this.ctx.drawImage(this.scoreTriangleImage, 850, 20, 120, 55);
   }
 
   update() {
@@ -147,6 +230,17 @@ class Game {
     this.updateObjectPosition();
     this.sortCubes();
     this.updateEnemyPosition();
+    this.checkHealth();
+  }
+
+  checkHealth() {
+    if (this.cam.health <= 0) {
+      this.clearGame();
+    }
+  }
+
+  clearHealthDecrease() {
+    clearInterval(this.healthDecreaseInterval);
   }
 
   /**
@@ -155,11 +249,24 @@ class Game {
    */
   collisionHandler(collisionArray) {
     let objectType = collisionArray[1].objectType;
-    if (objectType !== 1) {
+    if (objectType !== 1 && objectType !== 6) {
       if (objectType === 4) {
-        console.log("you are dead");
+        let healthLeft = this.cam.health - 1;
+        this.cam.health = healthLeft;
+        if (healthLeft <= 0) {
+          this.clearGame();
+        }
       } else if (objectType === 5) {
         this.score++;
+        if (this.score === this.totalStarCount) {
+          this.won = true;
+          this.clearGame();
+        }
+        if (this.cam.health <= this.cam.maxHealth - 10) {
+          this.cam.health = this.cam.health + this.scoreLifeValue;
+        } else {
+          this.cam.health = this.cam.maxHealth;
+        }
         this.pointSound.play();
         let index = this.objects.indexOf(collisionArray[1]);
         this.objects.splice(index, 1);
@@ -175,6 +282,14 @@ class Game {
         ob.moveUpdate();
       }
     }
+  }
+
+  clearGame() {
+    this.objects = [];
+    this.running = false;
+    this.clearHealthDecrease();
+    let detail = [[100, -80, 800], this.colorType2];
+    this.makeGameOverCube(detail);
   }
 
   checkCollision() {
@@ -318,8 +433,10 @@ class Game {
    * @param {*} type :type of object
    * @param {*} direction : a array of vectore cross product
    */
-  drawCube(facesList, color, type, direction) {
-    direction[3][2] = 100;
+  drawCube(facesList, color, type, direction, bottomHide) {
+    if (bottomHide) {
+      direction[3][2] = 100;
+    }
     for (let j in facesList) {
       //calculate direction of camera
       //compare direction of camera and the direction of the cube faces
@@ -337,7 +454,7 @@ class Game {
 
         // Close the path and draw the face
         this.ctx.closePath();
-        if (type === 0 || type === 5) {
+        if (type === 0 || type === 5 || type === 6) {
           this.ctx.strokeWidth = 4;
           this.ctx.strokeStyle = "black";
           this.ctx.stroke();
@@ -425,8 +542,17 @@ class Game {
             facesList.push(coords);
           }
         }
-
-        this.drawCube(facesList, ob.facePattern, cubeObject.Type, direction);
+        let bottomHide = true;
+        if (ob.objectType === 6) {
+          bottomHide = false;
+        }
+        this.drawCube(
+          facesList,
+          cubeObject.facePattern,
+          cubeObject.Type,
+          direction,
+          bottomHide
+        );
       }
     }
   }
@@ -480,7 +606,6 @@ class Game {
             200,
             400,
             0,
-            "gray",
             // pattern
             this.colorType
           ];
@@ -494,7 +619,6 @@ class Game {
             380,
             200,
             30,
-            "gray",
             this.pattern
           ];
           this.makeWall(detail);
@@ -511,6 +635,14 @@ class Game {
             this.colorType2
           ];
           this.makeStar(detail);
+          this.totalStarCount++;
+        } else if (mapRow[col] === 6) {
+          let detail = [
+            [col * 220 - 670, 0, row * 300 + 700],
+            this.colorType4,
+            this.colorType3
+          ];
+          this.makeTree(detail);
         }
       }
     }
@@ -526,6 +658,12 @@ class Game {
     this.objects.push(star);
   }
 
+  makeGameOverCube(detail) {
+    let cube = new overCube();
+    cube.init(detail);
+    this.objects.push(cube);
+  }
+
   /**
    *
    * @param {*} detail :array specifing [x, y, z, wallWeight, wallHeight, angle of rotation , color, pattern to be drawn]
@@ -534,6 +672,12 @@ class Game {
     let wall = new Wall();
     wall.makeWall(detail);
     this.objects.push(wall);
+  }
+
+  makeTree(detail) {
+    let tree = new Tree();
+    tree.makeTree(detail);
+    this.objects.push(tree);
   }
 
   /**
@@ -556,10 +700,9 @@ class Game {
     }
 
     this.ctx.closePath();
-    this.ctx.fillStyle = "#669966";
+
+    this.ctx.fillStyle = "#66cc66";
     this.ctx.fill();
-    this.ctx.strokeStyle = "black";
-    this.ctx.stroke();
   }
 
   /**

@@ -12,10 +12,9 @@ class Star extends GameObject {
   init(detail) {
     let [position, pattern] = detail;
     let [x, y, z] = position;
-    this.facePattern = pattern;
 
     let cubeOb = new pyramidObject();
-    cubeOb.init([x, y, z], "gold", 0, 5, 30);
+    cubeOb.init([x, y, z], pattern, 0, 5, 30);
     this.CubeArray.push(cubeOb);
 
     this.initPosition();
