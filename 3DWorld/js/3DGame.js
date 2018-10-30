@@ -84,7 +84,7 @@ class Game {
   }
 
   decreaseHealth() {
-    this.cam.health = this.cam.health - 10;
+    this.cam.health = this.cam.health - 2;
   }
 
   loadImage() {
