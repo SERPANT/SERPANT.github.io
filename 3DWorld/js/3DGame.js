@@ -84,7 +84,7 @@ class Game {
   }
 
   decreaseHealth() {
-    this.cam.health = this.cam.health - 2;
+    this.cam.health = this.cam.health - 10;
   }
 
   loadImage() {
@@ -288,7 +288,7 @@ class Game {
     this.objects = [];
     this.running = false;
     this.clearHealthDecrease();
-    let detail = [[100, -80, 800], this.colorType2];
+    let detail = [[100, -200, 800], this.colorType2];
     this.makeGameOverCube(detail);
   }
 
@@ -701,7 +701,7 @@ class Game {
 
     this.ctx.closePath();
 
-    this.ctx.fillStyle = "#66cc66";
+    this.ctx.fillStyle = "#82D65F";
     this.ctx.fill();
   }
 

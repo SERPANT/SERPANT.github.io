@@ -20,23 +20,4 @@ class CubeOverObject extends pyramidObject {
     this.facePattern = pattern;
     this.cubeFace = this.makeFace(this.cubeFace);
   }
-
-  rotateCenter(theta, position) {
-    for (let vertex in this.cube) {
-      let [x, y, z] = this.cube[vertex];
-      let newX = x - 1;
-      let newY = y + 50;
-      let newZ = z - 1;
-      let [rotatedX, rotatedY, rotatedZ] = this.rotateY(
-        theta,
-        newX,
-        newY,
-        newZ
-      );
-
-      this.cube[vertex] = [rotatedX + 1, rotatedY + 1, rotatedZ + 1];
-    }
-
-    this.updateVertices(this.angle, position);
-  }
 }
