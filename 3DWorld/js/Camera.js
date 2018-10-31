@@ -11,10 +11,10 @@ class Camera {
     this.s = this.minSpeed;
     this.globalJumpY = -35;
     this.deltaTimeJump = 0.9;
-    this.backgroundStart = 2078;
+    this.backgroundStart = 5253;
     this.health = this.maxHealth;
     this.deltaPosition = [0, 0, 0];
-    this.backgrounRotationSpeed = 380;
+    this.backgrounRotationSpeed = 1650;
     this.directionMovement = [0, 0, 1];
     this.jumpVelocity = [0, this.globalJumpY, 12];
   }
@@ -200,7 +200,6 @@ class Camera {
   }
 
   onGround(limity, currenty) {
-    console.log(currenty);
     if (limity <= currenty) {
       return true;
     }

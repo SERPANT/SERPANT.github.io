@@ -1,5 +1,4 @@
 function sortByDistance(array, camPositon) {
-  console.log("working");
   let counter = 0;
   let distarray = [];
 

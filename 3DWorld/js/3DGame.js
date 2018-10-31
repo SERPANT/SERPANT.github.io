@@ -101,7 +101,7 @@ class Game {
     let texture6 = new Image();
     texture6.src = "images/texture6.jpg";
     this.scoreTriangleImage.src = "images/star2.png";
-    this.skyBox.src = "images/background10.png";
+    this.skyBox.src = "images/background11.png";
     this.healthBar.src = "images/heart2.png";
     this.pinkBar.src = "images/pinkbar.png";
     this.blueBar.src = "images/bluebar.png";
@@ -137,29 +137,10 @@ class Game {
 
   makeObjects() {
     this.makeMaze();
-    // makeSingleCube();
   }
 
-  // function makeSingleCube() {
-  //   pir = new pyramidObject();
-
-  //   pir.init([-670, 0, 700], "red", 0, 5, 100);
-  //   objects.push(pir);
-  //   // console.log(objects);
-  // }
-
   gameLoop() {
-    //   if (this.running === true) {
     this.update();
-    // }
-    // } else {
-    //   // this.ctx.clearRect(0, 0, 2 * this.canvasWidth, 2 * this.canvasHeight);
-    //   if (this.won === true) {
-    //     console.log("won");
-    //   } else {
-    //     console.log("failed");
-    //   }
-    // }
     this.draw();
     requestAnimationFrame(this.gameLoop.bind(this));
   }
@@ -175,20 +156,6 @@ class Game {
   }
 
   drawBackground() {
-    //  void ctx.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight);
-
-    // this.ctx.drawImage(
-    //   this.skyBox,
-    //   this.cam.backgroundStart,
-    //   0,
-    //   1300,
-    //   900,
-    //   0,
-    //   0,
-    //   1000,
-    //   750
-    // );
-
     this.ctx.drawImage(
       this.skyBox,
       this.cam.backgroundStart,
@@ -229,8 +196,10 @@ class Game {
     }
     this.updateObjectPosition();
     this.sortCubes();
-    this.updateEnemyPosition();
-    this.checkHealth();
+    if (this.running === true) {
+      this.updateEnemyPosition();
+      this.checkHealth();
+    }
   }
 
   checkHealth() {
@@ -249,6 +218,7 @@ class Game {
    */
   collisionHandler(collisionArray) {
     let objectType = collisionArray[1].objectType;
+
     if (objectType !== 1 && objectType !== 6) {
       if (objectType === 4) {
         let healthLeft = this.cam.health - 1;
@@ -258,10 +228,7 @@ class Game {
         }
       } else if (objectType === 5) {
         this.score++;
-        if (this.score === this.totalStarCount) {
-          this.won = true;
-          this.clearGame();
-        }
+
         if (this.cam.health <= this.cam.maxHealth - 10) {
           this.cam.health = this.cam.health + this.scoreLifeValue;
         } else {
@@ -270,6 +237,11 @@ class Game {
         this.pointSound.play();
         let index = this.objects.indexOf(collisionArray[1]);
         this.objects.splice(index, 1);
+
+        if (this.score === this.totalStarCount) {
+          this.won = true;
+          this.clearGame();
+        }
       }
 
       this.cam.updatePosition();
@@ -288,7 +260,8 @@ class Game {
     this.objects = [];
     this.running = false;
     this.clearHealthDecrease();
-    let detail = [[100, -200, 800], this.colorType2];
+    let detail = [[100, -200, 800], this.colorType2, this.won];
+    this.cam.positon = [2528.449868572729, -336, -3415.0570391281517];
     this.makeGameOverCube(detail);
   }
 
@@ -434,7 +407,7 @@ class Game {
    * @param {*} direction : a array of vectore cross product
    */
   drawCube(facesList, color, type, direction, bottomHide) {
-    if (bottomHide) {
+    if (bottomHide && this.running === true) {
       direction[3][2] = 100;
     }
     for (let j in facesList) {
@@ -475,18 +448,33 @@ class Game {
     let onscreen;
     for (let vertex of face) {
       let [x, y] = screen_coords[vertex];
-      if (
-        vertexList[vertex][2] > -100 &&
-        x > -this.limitRendering &&
-        x < this.canvasWidth + this.limitRendering &&
-        y > -this.limitRendering &&
-        y < this.canvasHeight + this.limitRendering &&
-        vertexList[vertex][2] < 5000
-      ) {
-        onscreen = true;
+      if (this.running === false) {
+        if (
+          vertexList[vertex][2] > -100 &&
+          x > -this.limitRendering &&
+          x < this.canvasWidth + this.limitRendering &&
+          y > -this.limitRendering &&
+          y < this.canvasHeight + this.limitRendering
+        ) {
+          onscreen = true;
+        } else {
+          onscreen = false;
+          break;
+        }
       } else {
-        onscreen = false;
-        break;
+        if (
+          vertexList[vertex][2] > -100 &&
+          x > -this.limitRendering &&
+          x < this.canvasWidth + this.limitRendering &&
+          y > -this.limitRendering &&
+          y < this.canvasHeight + this.limitRendering &&
+          vertexList[vertex][2] < 5000
+        ) {
+          onscreen = true;
+        } else {
+          onscreen = false;
+          break;
+        }
       }
     }
 
@@ -557,43 +545,6 @@ class Game {
     }
   }
 
-  // function drawObjects() {
-  //   for (var cubeObject of objects) {
-  //     let cube = cubeObject.verti;
-  //     // console.log(cube);
-  //     var vertexList = [];
-  //     var screen_coords = [];
-
-  //     for (var i of cube) {
-  //       var [q, w, e] = i;
-  //       [q, w, e] = TransformAndRotate(q, w, e);
-  //       vertexList.push([q, w, e]);
-  //       [q, w] = project(q, w, e);
-  //       screen_coords.push([q + dx, w + dy, e]);
-  //     }
-
-  //     let facesList = [];
-  //     let direction = [];
-  //     let onscreen;
-
-  //     for (face of cubeObject.cubeFace) {
-  //       onscreen = false;
-  //       onscreen = checkCubeOnScreen(face, screen_coords, vertexList);
-  //       direction.push(calculateDirection(face, screen_coords));
-  //       if (onscreen) {
-  //         var coords = [];
-  //         for (var i of face) {
-  //           coords.push(screen_coords[i]);
-  //         }
-  //         facesList.push(coords);
-  //       }
-  //     }
-
-  //     console.log(direction);
-  //     drawCube(facesList, colorType, cubeObject.Type, direction, false);
-  //   }
-  // }
-
   makeMaze() {
     for (let row in this.gameMap) {
       let mapRow = this.gameMap[row];
@@ -606,7 +557,6 @@ class Game {
             200,
             400,
             0,
-            // pattern
             this.colorType
           ];
 
@@ -737,11 +687,3 @@ class Game {
     this.cam.resetSpeed();
   }
 }
-
-var game = new Game();
-
-document.addEventListener("keypress", game.move.bind(game.that));
-document.addEventListener("keyup", game.reset.bind(game.that));
-document.addEventListener("mousemove", game.mouse.bind(game.that));
-
-game.init(document.getElementsByClassName("canvas")[0]);

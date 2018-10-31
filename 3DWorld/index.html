@@ -13,9 +13,27 @@
 </head>
 
 <body>
-  <DIV>
-    <canvas class="canvas" width="1000px" height="1000px"></canvas>
-  </DIV>
+  <div class="container">
+
+    <div id="carousel">
+      <figure id="spinner">
+        <img src="images/front.png" alt>
+        <img src="images/controls.png" alt>
+        <img src="images/Screenshot (141).png" alt>
+        <img src="images/image2.png" alt>
+
+      </figure>
+    </div>
+    <div class="button">
+      <span style="float: left;" class="ss-icon" onclick="galleryspin('')">&#171;</span>
+      <span style="float:right" class="ss-icon" onclick="galleryspin('-')">&#187;</span>
+    </div>
+  </div>
+
+
+  <div id="center">
+
+  </div>
 
   <script src="js/GeneralAlgorithum.js"></script>
   <script src="js/vector.js"></script>
@@ -23,7 +41,6 @@
   <script src="js/Shape.js"></script>
   <script src="js/pyramid.js"></script>
   <script src="js/Cube.js"></script>
-  <script src="js/CubeGameOver.js"></script>
   <script src="js/pyamidTree.js"></script>
   <script src="js/GameObject.js"></script>
   <script src="js/Tree.js"></script>
@@ -32,6 +49,7 @@
   <script src="js/Wall.js"></script>
   <script src="js/gameOverCube.js"></script>
   <script src="js/3DGame.js"></script>
+  <script src="js/slide.js"></script>
 </body>
 
 </html>
