@@ -8,10 +8,6 @@
   cursor: none;
 }
 
-body {
-  background: black;
-}
-
 .container {
   margin: 0 auto;
   margin-top: 100px;
@@ -20,10 +16,9 @@ body {
 
 #carousel {
   perspective: 1200px;
-  background: #100000;
-  padding-top: 10%;
+  background: #ffffff;
+  padding-top: 100px;
   font-size: 0;
-  margin-bottom: 3rem;
   overflow: hidden;
 }
 #spinner {
@@ -54,7 +49,7 @@ body {
   transform: rotateY(-270deg);
 }
 
-#carousel ~ span {
+#carousel span {
   color: #fff;
   margin: 5%;
   display: inline-block;
@@ -62,17 +57,16 @@ body {
   font-size: 2rem;
   transition: 0.6s color;
   position: relative;
-  margin-top: -6rem;
   border-bottom: none;
   line-height: 0;
 }
-#carousel ~ span:hover {
+#carousel span:hover {
   color: #888;
   cursor: pointer;
 }
 
 .ss-icon {
-  color: white;
+  color: black;
   font-size: 50px;
 }
 
