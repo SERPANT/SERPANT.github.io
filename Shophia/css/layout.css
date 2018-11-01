@@ -1,78 +1,76 @@
-.main-container{
- 
-  max-width: 90em;
-  margin:0 auto;
-}
-
-.header{
+.full-container {
   width: 100%;
 }
 
-.limiter-container{
-  margin:0 auto;
+.main-container {
+  max-width: 90em;
+  margin: 0 auto;
+}
+
+.header {
+  width: 100%;
+}
+
+.limiter-container {
+  margin: 0 auto;
   width: 89.5833333333%;
 }
 
-.contact-login{
+.contact-login {
   background: #f2f2f2;
   padding-top: 12px;
   width: 100%;
   padding-bottom: 14px;
 }
 
-.nav-icon-socialMedia{
-
+.nav-icon-socialMedia {
   width: 100%;
   margin-top: 10px;
 }
 
-.nav-item a:hover{
+.nav-item a:hover {
   text-decoration: underline;
 }
 
-
-.gray{
+.gray {
   background: #f2f2f2;
 }
 
-.body-part{
+.body-part {
   margin-top: -6px;
 }
 
-
-.rest-body{
+.rest-body {
   margin-top: 62px;
 }
 
-.handpicked-items-container{
+.handpicked-items-container {
   width: 100%;
   margin-top: 60px;
 }
-.Summer-collection-container{
+.Summer-collection-container {
   margin-top: 90px;
   width: 100%;
 }
 
-.summer-Collection-list-container{
-  margin-top:50px;
+.summer-Collection-list-container {
+  margin-top: 50px;
   border-style: solid;
   border-width: thin;
   padding-top: 21px;
   padding-bottom: 21px;
 }
 
-
-.brand-container{
+.brand-container {
   margin-top: 96px;
 }
 
-.customer-says-container{
+.customer-says-container {
   margin-top: 114px;
   width: 100%;
 }
 
-
-.customer-says-content{
+.customer-says-content {
   position: relative;
   background: #cccc99;
   width: 100%;
@@ -80,27 +78,22 @@
   margin-top: 58px;
 }
 
-
-
-footer{
+footer {
   background: black;
-  padding-top:67px;
+  padding-top: 67px;
   padding-left: 10px;
 }
 
-
-.footer-upper-left{
+.footer-upper-left {
   float: left;
   width: 51.58527132%;
 }
-
 
 .footer-upper-left ul {
   width: 100%;
 }
 
-
-.footer-upper-right{
-  width:39.41085271%;
+.footer-upper-right {
+  width: 39.41085271%;
   float: right;
 }
