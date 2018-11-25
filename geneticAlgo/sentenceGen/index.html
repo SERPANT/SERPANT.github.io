@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>GENETIC ALGORITHUM</title>
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/layout.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div class="main-body">
+      <header><h1>SENTENCE GENERATION</h1></header>
+      <div class="input-field">
+        <label class="label">ENTER TEXT:</label>
+        <input class="input-box" type="text" placeholder="enter text here" />
+        <button class="start-button" onclick="new Main()">RUN</button>
+      </div>
+      <div class="display-panel">
+        <span class="display-panel-text"><h3>Display Panel</h3></span>
+        <div class="current-best">
+          Current Best : <span class="current-best-text"> Best</span>
+        </div>
+        <div class="current-generation">
+          Current Generation :
+          <span class="current-generation-text">Generation</span>
+        </div>
+        <div class="done"></div>
+      </div>
+    </div>
+
+    <script src="js/DNA.js"></script>
+    <script src="js/population.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

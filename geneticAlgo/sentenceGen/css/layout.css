@@ -1,0 +1,15 @@
+.main-body {
+  margin: 0 auto;
+  max-width: 90em;
+  margin-top: 50px;
+}
+
+.input-field {
+  width: 100%;
+  margin-top: 25px;
+}
+
+.display-panel {
+  width: 100%;
+  margin-top: 25px;
+}
