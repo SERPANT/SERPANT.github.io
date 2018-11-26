@@ -13,9 +13,29 @@
     <div class="main-body">
       <header><h1>SENTENCE GENERATION</h1></header>
       <div class="input-field">
-        <label class="label">ENTER TEXT:</label>
-        <input class="input-box" type="text" placeholder="enter text here" />
-        <button class="start-button" onclick="new Main()">RUN</button>
+        <table cellspacing="10px">
+          <tr>
+            <td><label class="label">ENTER TEXT:</label></td>
+            <td>
+              <input
+                class="input-box"
+                type="text"
+                placeholder="enter text here"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td><label>Max-population:</label></td>
+            <td>
+              <input class="input-box-population" type="text" value="200" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <button class="start-button" onclick="new Main()">RUN</button>
+            </td>
+          </tr>
+        </table>
       </div>
       <div class="display-panel">
         <span class="display-panel-text"><h3>Display Panel</h3></span>

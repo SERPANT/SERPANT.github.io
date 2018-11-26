@@ -36,7 +36,7 @@ class DNA {
       }
     }
 
-    this.fitness = score / phrase.length;
+    this.fitness = Math.pow(score / phrase.length, 2);
   }
 
   /**

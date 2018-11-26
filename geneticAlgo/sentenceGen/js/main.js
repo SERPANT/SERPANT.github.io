@@ -1,6 +1,5 @@
 class Main {
   constructor() {
-    this.maxPop = 300;
     this.found = false;
     this.generation = 0;
     this.mutaionRate = 0.01;
@@ -12,6 +11,11 @@ class Main {
     //get the phrase from textbox
     let inputBox = document.getElementsByClassName("input-box")[0];
     this.phrase = inputBox.value;
+
+    //get maxpopulation
+    this.maxPop = parseInt(
+      document.getElementsByClassName("input-box-population")[0].value
+    );
 
     //get the display panel for best gene
     this.displayPanel = {};
