@@ -1,0 +1,9 @@
+.canvas {
+  background: black;
+  margin-top: 20px;
+}
+
+.main-container {
+  width: 1400px;
+  margin: 0 auto;
+}
