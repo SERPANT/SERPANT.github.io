@@ -8,11 +8,12 @@ class DNA {
 
   initGene() {
     for (let i = 0; i < this.length; i += 5) {
-      this.genes[i] = this.random2DVector();
-      this.genes[i + 1] = this.genes[i];
-      this.genes[i + 2] = this.genes[i];
-      this.genes[i + 3] = this.genes[i];
-      this.genes[i + 4] = this.genes[i];
+      let vector = this.random2DVector();
+      this.genes[i] = vector;
+      this.genes[i + 1] = vector;
+      this.genes[i + 2] = vector;
+      this.genes[i + 3] = vector;
+      this.genes[i + 4] = vector;
     }
   }
 

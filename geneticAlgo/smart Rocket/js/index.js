@@ -1,12 +1,12 @@
-let canvas = document.getElementsByClassName("canvas")[0];
-
 class Game {
   constructor(canvas) {
     this.maxPop = 20;
     this.frames = 100;
     this.counter = -1;
     this.canvas = canvas;
+    this.target = new Image();
     this.ctx = canvas.getContext("2d");
+    this.target.src = "./images/ball.png";
     this.population = new Population(
       this.maxPop,
       this.frames,
@@ -14,8 +14,6 @@ class Game {
       this.canvas.height - 60
     );
 
-    this.target = new Image();
-    this.target.src = "./images/ball.png";
     this.gameLoop();
   }
 
@@ -35,7 +33,7 @@ class Game {
     this.population.update(this.counter);
   }
 
-  Genericupdate() {
+  geneticUpdate() {
     this.population.calFitness();
     this.population.newGeneration();
     this.population.calFitness();
@@ -44,7 +42,12 @@ class Game {
 
   render() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    this.renderRockets();
+    this.renderLife();
+    this.ctx.drawImage(this.target, this.canvas.width / 2 - 50, 20, 50, 50);
+  }
 
+  renderRockets() {
     for (let element of this.population.getPopulation()) {
       this.ctx.save();
 
@@ -52,7 +55,6 @@ class Game {
       let xVector = element.velecity[0];
 
       let rotate = (Math.atan2(xVector, yVector) * 180) / Math.PI;
-
       if (rotate < 0) {
         rotate = 360 + rotate;
       }
@@ -63,13 +65,14 @@ class Game {
 
       this.ctx.restore();
     }
+  }
 
+  renderLife() {
     this.ctx.font = "30px Arial";
     this.ctx.fillStyle = "red";
     this.ctx.fillText(this.counter, 10, 50);
-
-    this.ctx.drawImage(this.target, this.canvas.width / 2 - 50, 20, 50, 50);
   }
 }
 
+let canvas = document.getElementsByClassName("canvas")[0];
 let game = new Game(canvas);
