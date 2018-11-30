@@ -20,4 +20,27 @@ class DNA {
   random2DVector() {
     return [Math.random() * 2 - 1, Math.random() * -0.2];
   }
+
+  crossOver(partner) {
+    let mid = Math.floor(Math.random() * this.genes.length);
+    let child = new DNA(this.genes.length);
+
+    for (let i = 0; i < this.genes.length; i++) {
+      if (i > mid) {
+        child.genes[i] = this.genes[i];
+      } else {
+        child.genes[i] = partner.genes[i];
+      }
+    }
+
+    return child;
+  }
+
+  mutate(mutationRate) {
+    for (let i in this.genes) {
+      if (Math.random() < mutationRate) {
+        this.genes[i] = this.random2DVector();
+      }
+    }
+  }
 }

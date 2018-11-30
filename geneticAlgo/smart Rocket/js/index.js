@@ -1,17 +1,21 @@
 class Game {
   constructor(canvas) {
+    this.generation = 0;
     this.maxPop = 20;
-    this.frames = 100;
+    this.frames = 105;
     this.counter = -1;
     this.canvas = canvas;
+    this.mutationRate = 0.01;
     this.target = new Image();
     this.ctx = canvas.getContext("2d");
     this.target.src = "./images/ball.png";
+    this.targetPosition = [this.canvas.width / 2 - 50, 20];
     this.population = new Population(
       this.maxPop,
       this.frames,
       this.canvas.width / 2,
-      this.canvas.height - 60
+      this.canvas.height - 60,
+      this.mutationRate
     );
 
     this.gameLoop();
@@ -24,27 +28,35 @@ class Game {
   }
 
   update() {
-    if (this.counter < 99) {
+    if (this.counter < this.frames - 1) {
       this.counter++;
     } else {
-      this.population.reset();
+      this.generation++;
+      this.geneticUpdate();
+      // this.population.reset();
       this.counter = 0;
     }
     this.population.update(this.counter);
   }
 
   geneticUpdate() {
-    this.population.calFitness();
+    this.population.calFitness(this.targetPosition);
     this.population.newGeneration();
-    this.population.calFitness();
-    this.population.evaluate();
+    // this.population.calFitness(this.targetPosition);
+    // this.population.evaluate();
   }
 
   render() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.renderRockets();
     this.renderLife();
-    this.ctx.drawImage(this.target, this.canvas.width / 2 - 50, 20, 50, 50);
+    this.ctx.drawImage(
+      this.target,
+      this.targetPosition[0],
+      this.targetPosition[1],
+      50,
+      50
+    );
   }
 
   renderRockets() {
@@ -70,7 +82,7 @@ class Game {
   renderLife() {
     this.ctx.font = "30px Arial";
     this.ctx.fillStyle = "red";
-    this.ctx.fillText(this.counter, 10, 50);
+    this.ctx.fillText(this.generation, 10, 50);
   }
 }
 

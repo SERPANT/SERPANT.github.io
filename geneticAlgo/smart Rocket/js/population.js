@@ -1,10 +1,11 @@
 class Population {
-  constructor(maxPop, frames, startX, startY) {
+  constructor(maxPop, frames, startX, startY, mutationRate) {
     this.maxPop = maxPop;
     this.frames = frames;
     this.population = [];
     this.startX = startX;
     this.startY = startY;
+    this.mutationRate = mutationRate;
     this.initPopulation();
   }
 
@@ -18,14 +19,55 @@ class Population {
     return this.population;
   }
 
-  calFitness() {
-    for (let element in this.population) {
-      console.log("calculate fitness for each");
+  calFitness(targetPosition) {
+    for (let element of this.population) {
+      let disX = Math.pow(element.position[0] - targetPosition[0], 2);
+      let disY = Math.pow(element.position[1] - targetPosition[1], 2);
+      let dist = Math.pow(disX + disY, 1 / 2);
+      let fitness = 80 / dist;
+      element.fitness = fitness > 1 ? 1 : fitness;
     }
   }
 
   newGeneration() {
-    console.log("create new Generation");
+    let fitnessSum = this.getFitnessSum();
+    let probArray = this.percentageConversion(fitnessSum);
+
+    for (let i in this.population) {
+      let p1 = this.population[this.selectParent(probArray)];
+      let p2 = this.population[this.selectParent(probArray)];
+      let child = p1.crossOver(p2, this.startX, this.startY, this.frames);
+      child.mutate(this.mutationRate);
+      this.population[i] = child;
+    }
+  }
+
+  selectParent(probArray) {
+    let rand = Math.random();
+    let counter = -1;
+    while (rand > 0) {
+      counter++;
+      rand -= probArray[counter];
+    }
+
+    return counter;
+  }
+
+  percentageConversion(total) {
+    let probArray = this.population.map(element => {
+      return element.fitness / total;
+    });
+
+    return probArray;
+  }
+
+  getFitnessSum() {
+    let fitnessSum = 0;
+    for (let element of this.population) {
+      fitnessSum += element.fitness;
+    }
+
+    return fitnessSum;
   }
 
   evaluate() {
