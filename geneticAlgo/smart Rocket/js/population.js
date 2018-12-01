@@ -20,12 +20,23 @@ class Population {
   }
 
   calFitness(targetPosition) {
+    let maxFitness = 0;
     for (let element of this.population) {
-      let disX = Math.pow(element.position[0] - targetPosition[0], 2);
-      let disY = Math.pow(element.position[1] - targetPosition[1], 2);
-      let dist = Math.pow(disX + disY, 1 / 2);
-      let fitness = 80 / dist;
-      element.fitness = fitness > 1 ? 1 : fitness;
+      if (!element.doneTraning) {
+        let disX = Math.pow(element.position[0] - targetPosition[0], 2);
+        let disY = Math.pow(element.position[1] - targetPosition[1], 2);
+        let dist = Math.pow(disX + disY, 1 / 2);
+        let fitness = 1 / dist;
+        // console.log(fitness);
+        if (fitness > maxFitness) {
+          maxFitness = fitness;
+        }
+        element.fitness = fitness;
+      }
+    }
+
+    for (let element of this.population) {
+      element.fitness /= maxFitness;
     }
   }
 
@@ -34,11 +45,13 @@ class Population {
     let probArray = this.percentageConversion(fitnessSum);
 
     for (let i in this.population) {
-      let p1 = this.population[this.selectParent(probArray)];
-      let p2 = this.population[this.selectParent(probArray)];
-      let child = p1.crossOver(p2, this.startX, this.startY, this.frames);
-      child.mutate(this.mutationRate);
-      this.population[i] = child;
+      if (!this.population[i].doneTraning) {
+        let p1 = this.population[this.selectParent(probArray)];
+        let p2 = this.population[this.selectParent(probArray)];
+        let child = p1.crossOver(p2, this.startX, this.startY, this.frames);
+        child.mutate(this.mutationRate);
+        this.population[i] = child;
+      }
     }
   }
 
@@ -71,7 +84,13 @@ class Population {
   }
 
   evaluate() {
-    console.log("evalute");
+    // console.log(Object.assign({}, this.population));
+    for (let element of this.population) {
+      if (element.fitness === 1) {
+        //  element.doneTraning = true;
+        //console.log("one");
+      }
+    }
   }
 
   update(counter) {

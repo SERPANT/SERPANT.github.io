@@ -7,6 +7,7 @@ class Rocket {
     this.velecity = [0, 0];
     this.dna = new DNA(length);
     this.position = [posx, posy];
+    this.doneTraning = false;
     this.rocket = new Image();
     this.rocket.src = "./images/rocket.png";
   }

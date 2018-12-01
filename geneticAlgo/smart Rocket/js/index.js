@@ -1,15 +1,21 @@
 class Game {
   constructor(canvas) {
-    this.generation = 0;
+    this.setTarget = false;
+    this.startRectX = 0;
+    this.startRectY = 0;
+    this.endRectX = 0;
+    this.endRectY = 0;
+    this.down = false;
     this.maxPop = 20;
-    this.frames = 105;
+    this.frames = 130;
     this.counter = -1;
+    this.generation = 0;
     this.canvas = canvas;
     this.mutationRate = 0.01;
     this.target = new Image();
     this.ctx = canvas.getContext("2d");
     this.target.src = "./images/ball.png";
-    this.targetPosition = [this.canvas.width / 2 - 50, 20];
+    this.targetPosition = [100, 50];
     this.population = new Population(
       this.maxPop,
       this.frames,
@@ -18,6 +24,10 @@ class Game {
       this.mutationRate
     );
 
+    // this.gameLoop();
+  }
+
+  startLoop() {
     this.gameLoop();
   }
 
@@ -40,10 +50,12 @@ class Game {
   }
 
   geneticUpdate() {
-    this.population.calFitness(this.targetPosition);
+    let [a, b] = this.targetPosition;
+    this.population.calFitness([a + 25, b + 25]);
     this.population.newGeneration();
-    // this.population.calFitness(this.targetPosition);
-    // this.population.evaluate();
+    let [x, y] = this.targetPosition;
+    this.population.calFitness([x + 25, y + 25]);
+    this.population.evaluate();
   }
 
   render() {
@@ -57,6 +69,8 @@ class Game {
       50,
       50
     );
+
+    this.ctx.fill();
   }
 
   renderRockets() {
@@ -84,7 +98,51 @@ class Game {
     this.ctx.fillStyle = "red";
     this.ctx.fillText(this.generation, 10, 50);
   }
+
+  mouseDown(event) {
+    if (this.setTarget) {
+      if (!this.down) {
+        this.startRectX = event.clientX;
+        this.startRectY = event.clientY;
+      }
+      this.down = true;
+    } else if (!this.setTarget) {
+      this.targetPosition = [event.clientX, event.clientY];
+      this.setTarget = true;
+      this.startLoop();
+    }
+  }
+  mouseMove(event) {
+    if (this.down) {
+      this.endRectX = event.clientX;
+      this.endRectY = event.clientY;
+    }
+  }
+
+  mouseUp() {
+    if (this.setTarget) {
+      this.down = false;
+
+      this.ctx.rect(
+        this.startRectX,
+        this.startRectY,
+        this.endRectX - this.startRectX,
+        this.endRectY - this.startRectY
+      );
+    }
+  }
 }
 
 let canvas = document.getElementsByClassName("canvas")[0];
 let game = new Game(canvas);
+
+document.addEventListener("mousedown", event => {
+  game.mouseDown(event);
+});
+document.addEventListener("mousemove", event => {
+  game.mouseMove(event);
+});
+
+document.addEventListener("mouseup", () => {
+  game.mouseUp();
+});

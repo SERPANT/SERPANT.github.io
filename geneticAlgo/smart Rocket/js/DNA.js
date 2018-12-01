@@ -18,7 +18,7 @@ class DNA {
   }
 
   random2DVector() {
-    return [Math.random() * 2 - 1, Math.random() * -0.2];
+    return [Math.random() * 2 - 1, Math.random() * -0.1];
   }
 
   crossOver(partner) {
