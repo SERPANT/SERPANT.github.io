@@ -23,18 +23,23 @@ class Game {
       this.canvas.height - 60,
       this.mutationRate
     );
-
-    // this.gameLoop();
   }
 
   startLoop() {
     this.gameLoop();
   }
 
+  resetGame() {
+    this.setTarget = false;
+    this.population.reset();
+  }
+
   gameLoop() {
     this.update();
     this.render();
-    requestAnimationFrame(this.gameLoop.bind(this));
+    if (this.setTarget) {
+      requestAnimationFrame(this.gameLoop.bind(this));
+    }
   }
 
   update() {
@@ -43,7 +48,6 @@ class Game {
     } else {
       this.generation++;
       this.geneticUpdate();
-      // this.population.reset();
       this.counter = 0;
     }
     this.population.update(this.counter);
@@ -70,6 +74,7 @@ class Game {
       50
     );
 
+    this.ctx.fillStyle = "black";
     this.ctx.fill();
   }
 
@@ -96,7 +101,7 @@ class Game {
   renderLife() {
     this.ctx.font = "30px Arial";
     this.ctx.fillStyle = "red";
-    this.ctx.fillText(this.generation, 10, 50);
+    this.ctx.fillText("Generation: " + this.generation, 10, 50);
   }
 
   mouseDown(event) {
@@ -145,4 +150,8 @@ document.addEventListener("mousemove", event => {
 
 document.addEventListener("mouseup", () => {
   game.mouseUp();
+});
+
+document.addEventListener("keydown", () => {
+  game.resetGame();
 });
