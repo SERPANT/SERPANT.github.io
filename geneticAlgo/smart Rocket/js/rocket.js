@@ -3,6 +3,8 @@ class Rocket {
     this.width = 55;
     this.height = 40;
     this.fitness = 0;
+    this.maxFitness = 0;
+    this.collided = false;
     this.acceleration = 0;
     this.velecity = [0, 0];
     this.dna = new DNA(length);
@@ -12,11 +14,17 @@ class Rocket {
     this.rocket.src = "./images/rocket.png";
   }
 
+  setGene() {
+    this.dna.initGene();
+  }
+
   update(counter) {
-    this.velecity = this.newVelocity(counter);
-    for (let i in this.velecity) {
-      this.velecity[i] += this.acceleration;
-      this.position[i] += this.velecity[i];
+    if (!this.collided) {
+      this.velecity = this.newVelocity(counter);
+      for (let i in this.velecity) {
+        this.velecity[i] += this.acceleration;
+        this.position[i] += this.velecity[i];
+      }
     }
   }
 

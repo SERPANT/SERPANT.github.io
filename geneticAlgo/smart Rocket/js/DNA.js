@@ -3,7 +3,6 @@ class DNA {
     this.genes = [];
     this.fitness = 0.0;
     this.length = length;
-    this.initGene();
   }
 
   initGene() {

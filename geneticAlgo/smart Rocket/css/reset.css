@@ -1,3 +1,7 @@
 .clearfix {
   overflow: auto;
 }
+
+body {
+  background: black;
+}

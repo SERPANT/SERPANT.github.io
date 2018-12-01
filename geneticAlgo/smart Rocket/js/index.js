@@ -1,18 +1,20 @@
 class Game {
   constructor(canvas) {
-    this.setTarget = false;
-    this.startRectX = 0;
-    this.startRectY = 0;
+    this.maxPop = 20;
+    this.frames = 150;
     this.endRectX = 0;
     this.endRectY = 0;
-    this.down = false;
-    this.maxPop = 20;
-    this.frames = 130;
     this.counter = -1;
+    this.down = false;
+    this.obstacles = [];
+    this.startRectX = 0;
+    this.startRectY = 0;
     this.generation = 0;
     this.canvas = canvas;
+    this.setTarget = false;
     this.mutationRate = 0.01;
     this.target = new Image();
+    this.targetDimension = [50, 50];
     this.ctx = canvas.getContext("2d");
     this.target.src = "./images/ball.png";
     this.targetPosition = [100, 50];
@@ -43,6 +45,13 @@ class Game {
   }
 
   update() {
+    this.checkTargetCollision();
+    this.checkObstacleCollision();
+    let [a, b] = this.targetPosition;
+    this.population.calFitness([
+      a + this.targetDimension[0] / 2,
+      b + this.targetDimension[1] / 2
+    ]);
     if (this.counter < this.frames - 1) {
       this.counter++;
     } else {
@@ -53,13 +62,79 @@ class Game {
     this.population.update(this.counter);
   }
 
+  checkObstacleCollision() {
+    for (let element of this.population.getPopulation()) {
+      for (let object of this.obstacles) {
+        let rect1 = {
+          x: element.position[0],
+          y: element.position[1],
+          width: element.width,
+          height: element.height
+        };
+
+        var rect2 = {
+          x: object.x1,
+          y: object.y1,
+          width: object.x2,
+          height: object.y2
+        };
+
+        if (
+          rect1.x < rect2.x + rect2.width &&
+          rect1.x + rect1.width > rect2.x &&
+          rect1.y < rect2.y + rect2.height &&
+          rect1.height + rect1.y > rect2.y
+        ) {
+          console.log("object collision");
+          element.collided = true;
+        }
+      }
+    }
+  }
+
+  checkTargetCollision() {
+    for (let element of this.population.getPopulation()) {
+      let rect1 = {
+        x: element.position[0],
+        y: element.position[1],
+        width: element.width,
+        height: element.height
+      };
+      var rect2 = {
+        x: this.targetPosition[0],
+        y: this.targetPosition[1],
+        width: this.targetDimension[0] / 2,
+        height: this.targetDimension[1] / 2
+      };
+
+      if (
+        rect1.x < rect2.x + rect2.width &&
+        rect1.x + rect1.width > rect2.x &&
+        rect1.y < rect2.y + rect2.height &&
+        rect1.height + rect1.y > rect2.y
+      ) {
+        element.collided = true;
+        element.doneTraning = true;
+      }
+    }
+  }
+
   geneticUpdate() {
     let [a, b] = this.targetPosition;
-    this.population.calFitness([a + 25, b + 25]);
+
+    this.population.calFitness([
+      a + this.targetDimension[0] / 2,
+      b + this.targetDimension[1] / 2
+    ]);
     this.population.newGeneration();
-    let [x, y] = this.targetPosition;
-    this.population.calFitness([x + 25, y + 25]);
+
+    this.population.calFitness([
+      a + this.targetDimension[0] / 2,
+      b + this.targetDimension[1] / 2
+    ]);
+
     this.population.evaluate();
+    this.population.resetMaxFitness();
   }
 
   render() {
@@ -70,8 +145,8 @@ class Game {
       this.target,
       this.targetPosition[0],
       this.targetPosition[1],
-      50,
-      50
+      this.targetDimension[0],
+      this.targetDimension[1]
     );
 
     this.ctx.fillStyle = "black";
@@ -93,9 +168,9 @@ class Game {
       this.ctx.translate(element.position[0] + 25, element.position[1] + 20);
       this.ctx.rotate((rotate * Math.PI) / 180);
       this.ctx.drawImage(element.rocket, 0, 0, element.width, element.height);
-
       this.ctx.restore();
     }
+    //this.ctx.resetTransform();
   }
 
   renderLife() {
@@ -107,20 +182,27 @@ class Game {
   mouseDown(event) {
     if (this.setTarget) {
       if (!this.down) {
-        this.startRectX = event.clientX;
-        this.startRectY = event.clientY;
+        let rect = this.canvas.getBoundingClientRect();
+        this.startRectX = event.clientX - rect.left;
+        this.startRectY = event.clientY - rect.top;
       }
       this.down = true;
     } else if (!this.setTarget) {
-      this.targetPosition = [event.clientX, event.clientY];
+      let rect = this.canvas.getBoundingClientRect();
+      this.targetPosition = [
+        event.clientX - rect.left,
+        event.clientY - rect.top
+      ];
       this.setTarget = true;
       this.startLoop();
     }
   }
+
   mouseMove(event) {
     if (this.down) {
-      this.endRectX = event.clientX;
-      this.endRectY = event.clientY;
+      let rect = this.canvas.getBoundingClientRect();
+      this.endRectX = event.clientX - rect.left;
+      this.endRectY = event.clientY - rect.top;
     }
   }
 
@@ -134,6 +216,12 @@ class Game {
         this.endRectX - this.startRectX,
         this.endRectY - this.startRectY
       );
+
+      let x1 = this.startRectX;
+      let y1 = this.startRectY;
+      let x2 = this.endRectX - this.startRectX;
+      let y2 = this.endRectY - this.startRectY;
+      this.obstacles.push({ x1, y1, x2, y2 });
     }
   }
 }

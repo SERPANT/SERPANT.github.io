@@ -11,7 +11,9 @@ class Population {
 
   initPopulation() {
     for (let i = 0; i < this.maxPop; i++) {
-      this.population.push(new Rocket(this.frames, this.startX, this.startY));
+      let rocket = new Rocket(this.frames, this.startX, this.startY);
+      rocket.setGene();
+      this.population.push(rocket);
     }
   }
 
@@ -20,23 +22,18 @@ class Population {
   }
 
   calFitness(targetPosition) {
-    let maxFitness = 0;
     for (let element of this.population) {
-      if (!element.doneTraning) {
-        let disX = Math.pow(element.position[0] - targetPosition[0], 2);
-        let disY = Math.pow(element.position[1] - targetPosition[1], 2);
-        let dist = Math.pow(disX + disY, 1 / 2);
-        let fitness = 1 / dist;
-        // console.log(fitness);
-        if (fitness > maxFitness) {
-          maxFitness = fitness;
-        }
-        element.fitness = fitness;
-      }
-    }
+      // if (!element.doneTraning) {
+      let disX = Math.pow(element.position[0] - targetPosition[0], 2);
+      let disY = Math.pow(element.position[1] - targetPosition[1], 2);
+      let dist = Math.pow(disX + disY, 1 / 2);
+      let fitness = 1 / dist;
 
-    for (let element of this.population) {
-      element.fitness /= maxFitness;
+      if (fitness > element.maxFitness) {
+        element.fitness = fitness;
+        element.maxFitness = fitness;
+      }
+      //  }
     }
   }
 
@@ -49,6 +46,11 @@ class Population {
         let p1 = this.population[this.selectParent(probArray)];
         let p2 = this.population[this.selectParent(probArray)];
         let child = p1.crossOver(p2, this.startX, this.startY, this.frames);
+        child.mutate(this.mutationRate);
+        this.population[i] = child;
+      } else {
+        let child = new Rocket(this.frames, this.startX, this.startY);
+        child.dna = this.population[i].dna;
         child.mutate(this.mutationRate);
         this.population[i] = child;
       }
@@ -83,15 +85,7 @@ class Population {
     return fitnessSum;
   }
 
-  evaluate() {
-    // console.log(Object.assign({}, this.population));
-    for (let element of this.population) {
-      if (element.fitness === 1) {
-        //  element.doneTraning = true;
-        //console.log("one");
-      }
-    }
-  }
+  evaluate() {}
 
   update(counter) {
     for (let element of this.population) {
@@ -102,5 +96,11 @@ class Population {
   reset() {
     this.population = [];
     this.initPopulation();
+  }
+
+  resetMaxFitness() {
+    for (let element of this.population) {
+      element.maxFitness = 0;
+    }
   }
 }
