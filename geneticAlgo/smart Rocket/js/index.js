@@ -12,7 +12,7 @@ class Game {
     this.generation = 0;
     this.canvas = canvas;
     this.setTarget = false;
-    this.mutationRate = 0.01;
+    this.mutationRate = 0.1;
     this.target = new Image();
     this.targetDimension = [50, 50];
     this.ctx = canvas.getContext("2d");
@@ -85,7 +85,6 @@ class Game {
           rect1.y < rect2.y + rect2.height &&
           rect1.height + rect1.y > rect2.y
         ) {
-          console.log("object collision");
           element.collided = true;
         }
       }

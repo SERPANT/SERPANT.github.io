@@ -23,11 +23,10 @@ class Population {
 
   calFitness(targetPosition) {
     for (let element of this.population) {
-      // if (!element.doneTraning) {
       let disX = Math.pow(element.position[0] - targetPosition[0], 2);
       let disY = Math.pow(element.position[1] - targetPosition[1], 2);
       let dist = Math.pow(disX + disY, 1 / 2);
-      let fitness = 1 / dist;
+      let fitness = 1 / Math.pow(dist, 2);
 
       if (fitness > element.maxFitness) {
         element.fitness = fitness;
@@ -51,7 +50,7 @@ class Population {
       } else {
         let child = new Rocket(this.frames, this.startX, this.startY);
         child.dna = this.population[i].dna;
-        child.mutate(this.mutationRate);
+        //   child.mutate(0.01);
         this.population[i] = child;
       }
     }
