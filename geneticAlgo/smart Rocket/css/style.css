@@ -1,10 +1,12 @@
 .canvas {
-  background: skyblue;
+  background: rgba(0, 0, 0, 0);
+  border-color: white;
+  border-style: solid;
   margin-top: 15px;
 }
 
 .main-container {
-  width: 1400px;
+  max-width: 90em;
   margin: 0 auto;
 }
 

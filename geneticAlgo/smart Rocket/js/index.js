@@ -148,8 +148,10 @@ class Game {
       this.targetDimension[1]
     );
 
-    this.ctx.fillStyle = "black";
+    this.ctx.fillStyle = "brown";
     this.ctx.fill();
+    this.ctx.strokeStyle = "white";
+    this.ctx.stroke();
   }
 
   renderRockets() {
@@ -174,7 +176,7 @@ class Game {
 
   renderLife() {
     this.ctx.font = "30px Arial";
-    this.ctx.fillStyle = "red";
+    this.ctx.fillStyle = "gold";
     this.ctx.fillText("Generation: " + this.generation, 10, 50);
   }
 
