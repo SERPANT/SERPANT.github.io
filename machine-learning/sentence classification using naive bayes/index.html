@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Sentence Classified using Naive Bayes</title>
+    <link href="./css/reset.css" rel="stylesheet" />
+    <link href="./css/layout.css" rel="stylesheet" />
+    <link href="./css/style.css" rel="stylesheet" />
+  </head>
+  <body onload="start()">
+    <div class="main-container">
+      <div class="title"><h1>(Naive Bayes) Movie Review Classifier</h1></div>
+
+      <div class="form-table-container">
+        <table cellspacing="10px">
+          <tr>
+            <th><label>Input Sentence : </label></th>
+            <th>
+              <input
+                type="text"
+                placeholder="this is an example"
+                class="sentence-box"
+              />
+            </th>
+          </tr>
+          <tr>
+            <th><label>Review Type : </label></th>
+            <th><input type="text" placeholder="+ or -" class="type-box" /></th>
+          </tr>
+        </table>
+      </div>
+
+      <div class="button-group">
+        <button onclick="addData()" class="button">Train Model</button>
+        <button onclick="classifier()" class="button">Evaluate</button>
+      </div>
+
+      <div class="classifier-result"></div>
+
+      <div class="training-data-container">
+        <div class="training-title"><h2>Training Data</h2></div>
+        <div class="traning-data"><ul class="traning-data-list"></ul></div>
+      </div>
+    </div>
+    <script src="./js/script.js"></script>
+  </body>
+</html>

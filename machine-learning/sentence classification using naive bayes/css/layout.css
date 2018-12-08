@@ -1,0 +1,15 @@
+.main-container {
+  margin: 30px;
+}
+
+.training-data-container {
+  margin-top: 25px;
+}
+
+.form-table-container {
+  margin-top: 20px;
+}
+
+.classifier-result {
+  margin-top: 10px;
+}
