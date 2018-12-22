@@ -3,3 +3,18 @@
   height: 700px;
   margin: 0 auto;
 }
+
+.left {
+  float: left;
+  margin-left: 20px;
+}
+
+.right {
+  float: right;
+  margin-top: 20px;
+  margin-right: 20px;
+}
+
+.main {
+  clear: both;
+}

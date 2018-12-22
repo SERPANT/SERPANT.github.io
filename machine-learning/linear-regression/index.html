@@ -10,11 +10,19 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <div class="center">
-      <canvas width="900px" height="700px" class="canvas"></canvas>
+    <div class="main">
+      <div class="left">
+        <div class="center">
+          <canvas width="900px" height="700px" class="canvas"></canvas>
+        </div>
+      </div>
+      <div class="right">
+        <label> Enter Value For X:</label>
+        <input type="text" placeholder="enter x " class="x-value" />
+        <button class="find-y" onclick="findY()">Find Y</button>
+        <button class="start" onclick="startTraning()">Start Traning</button>
+      </div>
     </div>
-
-    <button class="start" onclick="startTraning()">Start Traning</button>
     <script src="./js/script.js"></script>
   </body>
 </html>

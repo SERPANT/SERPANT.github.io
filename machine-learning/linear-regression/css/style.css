@@ -1,3 +1,33 @@
 .canvas {
   background: skyblue;
 }
+
+.start {
+  border: none;
+  padding: 15px;
+  color: white;
+  font-size: 20px;
+  border-radius: 5px;
+  background: rgba(0, 150, 0, 0.9);
+}
+
+.start:hover {
+  background: rgba(0, 150, 0, 0.7);
+}
+
+.x-value {
+  padding: 15px;
+}
+
+.find-y {
+  border: none;
+  padding: 15px;
+  color: white;
+  font-size: 20px;
+  border-radius: 5px;
+  background: rgba(200, 100, 200, 0.9);
+}
+
+.find-y:hover {
+  background: rgba(200, 100, 200, 0.7);
+}
