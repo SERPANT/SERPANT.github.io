@@ -1,0 +1,10 @@
+.canvas {
+  width: 1500px;
+  height: 300px;
+  margin-top: 20px;
+  background: rgba(0, 255, 0, 0.5);
+}
+
+.instruction {
+  margin-top: 40px;
+}
