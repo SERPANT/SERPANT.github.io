@@ -15,7 +15,8 @@ class SinTree {
     this.period = 80;
     this.zPosition = 0;
     this.waveLength = 150;
-    this.maxAmplitude = 100;
+    this.maxAmplitude = 0;
+    this.offsetY = 120;
     this.offsetX = this.canvasWidth / 2;
   }
 
@@ -37,7 +38,8 @@ class SinTree {
    * Update any position or value that is required to change.
    */
   update() {
-    this.time = (this.time + 1) % 500;
+    //  this.time = (this.time + 1) % 500;
+    this.time++;
   }
 
   /**
@@ -45,8 +47,10 @@ class SinTree {
    */
   render() {
     this.context.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
-    this.drawWave(this.sinGetX.bind(this), "red");
-    this.drawWave(this.sinGetX.bind(this), "green", 700);
+    this.drawWave(this.sinGetX.bind(this), "#ff0000");
+    this.drawWave(this.sinGetX.bind(this), "#440000", -0.3);
+    this.drawWave(this.sinGetX.bind(this), "green", 10);
+    this.drawWave(this.sinGetX.bind(this), "#004400", 9.7);
   }
 
   /**
@@ -59,8 +63,8 @@ class SinTree {
       let x = equationFunction(i, phase);
 
       this.context.beginPath();
-      this.context.moveTo(x + this.offsetX, i);
-      this.context.lineTo(x + 2 + this.offsetX, i + 1);
+      this.context.moveTo(x + this.offsetX, i - this.offsetY);
+      this.context.lineTo(x + 3 + this.offsetX, i + 1 - this.offsetY);
       this.context.strokeStyle = color;
       this.context.stroke();
     }
@@ -70,11 +74,11 @@ class SinTree {
    *
    * @param {number} x
    */
-  sinGetX(x, phase = 0) {
+  sinGetX(y, phase = 0) {
     return (
-      this.maxAmplitude *
+      (this.maxAmplitude - y / 4) *
       Math.sin(
-        ((2 * Math.PI) / this.waveLength) * x -
+        ((2 * Math.PI) / this.waveLength) * y -
           ((2 * Math.PI) / this.period) * this.time +
           phase
       )
