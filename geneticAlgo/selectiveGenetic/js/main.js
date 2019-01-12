@@ -12,7 +12,7 @@ class SelectiveGenetics {
     this.generation = 1;
     this.characters = [];
     this.noOfCharacters = 9;
-    this.mutationRate = 0.01;
+    this.mutationRate = 0.2;
     this.createNewGeneration = false;
     this.spaceBetweenCharacters = 17;
 
@@ -124,7 +124,7 @@ class SelectiveGenetics {
    */
   drawFitness(startPoint, character) {
     this.context.font = "30px Arial";
-    this.context.fillStyle = "black";
+    this.context.fillStyle = "white";
     this.context.fillText(
       character.fitness - 1,
       this.size / 3 + startPoint,
@@ -258,7 +258,9 @@ class SelectiveGenetics {
       const characterIndex = parseInt(e.key) - 1;
       this.characters[characterIndex].fitness++;
     } catch (err) {
-      e.key === "Enter" ? this.setCreateNewGeneration(true) : alert("err");
+      e.key === "Enter"
+        ? this.setCreateNewGeneration(true)
+        : alert("only number allowed!");
     }
   }
 
@@ -281,3 +283,7 @@ let canvas = document.getElementsByClassName("canvas")[0];
 let selective = new SelectiveGenetics(canvas);
 
 document.addEventListener("keydown", selective.increaseScore.bind(selective));
+
+function newGeneration() {
+  selective.setCreateNewGeneration(true);
+}

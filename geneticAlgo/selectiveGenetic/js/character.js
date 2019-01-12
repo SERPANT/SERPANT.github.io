@@ -111,10 +111,15 @@ class Character {
    */
   mutate() {
     let random = Math.random();
-    this.shapeDNA =
-      random <= this.mutationRate
-        ? this.shapeDNA.setShapeToSquare()
-        : this.shapeDNA;
+
+    if (random <= this.mutationRate) {
+      const shape = new ShapeDna(this.length, this.size);
+      shape.setSquare();
+      this.shapeDNA = shape;
+    } else {
+      this.shapeDNA = this.shapeDNA;
+    }
+
     random = Math.random();
     this.eyeDNA =
       random <= this.mutationRate ? this.eyeDNA.setEyesToSquare() : this.eyeDNA;
