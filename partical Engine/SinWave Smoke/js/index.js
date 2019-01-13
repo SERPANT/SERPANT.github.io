@@ -15,8 +15,8 @@ class SinTree {
     this.period = 80;
     this.zPosition = 0;
     this.waveLength = 150;
+    this.offsetY = 50;
     this.maxAmplitude = 0;
-    this.offsetY = 120;
     this.offsetX = this.canvasWidth / 2;
   }
 
@@ -38,8 +38,7 @@ class SinTree {
    * Update any position or value that is required to change.
    */
   update() {
-    //  this.time = (this.time + 1) % 500;
-    this.time++;
+    this.time = (this.time + 1) % 1884;
   }
 
   /**
@@ -47,36 +46,42 @@ class SinTree {
    */
   render() {
     this.context.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
-    this.drawWave(this.sinGetX.bind(this), "#ff0000");
-    this.drawWave(this.sinGetX.bind(this), "#440000", -0.3);
-    this.drawWave(this.sinGetX.bind(this), "green", 10);
-    this.drawWave(this.sinGetX.bind(this), "#004400", 9.7);
+    this.drawWave(this.sinGetX.bind(this), "rgba(211, 211, 211");
+    this.drawWave(this.sinGetX.bind(this), "rgba(211, 211, 211", 10);
+    this.drawWave(this.sinGetX.bind(this), "rgba(211, 211, 211", 5.5);
+    this.drawWave(this.sinGetX.bind(this), "rgba(211, 211, 211", 6.5);
+    this.drawWave(this.sinGetX.bind(this), "rgba(200, 200, 200", 7.5);
   }
 
   /**
+   * Given a equation and phase Shift the graph is plotted in the specified color.
    *
    * @param {function} equationFunction : Equation function of the wave to get the value of y.
    * @param {string} color : Color to draw the wave in.
+   * @param {number} phase : Phase shift of the given equation.
    */
   drawWave(equationFunction, color, phase = 0) {
-    for (let i = this.canvasHeight; i >= 0; i -= 2) {
-      let x = equationFunction(i, phase);
+    for (let i = this.canvasHeight; i >= 0; i -= 1) {
+      const alphaValue = 0.7 - i / this.canvasHeight;
+      if (alphaValue <= 0) continue;
 
+      const x = equationFunction(i, phase, this.maxAmplitude);
       this.context.beginPath();
-      this.context.moveTo(x + this.offsetX, i - this.offsetY);
-      this.context.lineTo(x + 3 + this.offsetX, i + 1 - this.offsetY);
-      this.context.strokeStyle = color;
+      this.context.moveTo(x + this.offsetX, i + this.offsetY);
+      this.context.lineTo(x + 3 + this.offsetX, i + 2 + this.offsetY);
+      this.context.strokeStyle = color + `,${alphaValue})`;
       this.context.stroke();
     }
   }
 
   /**
+   * Given a value x the corresponding y value is returned by using sin wave function.
    *
    * @param {number} x
    */
-  sinGetX(y, phase = 0) {
+  sinGetX(y, phase = 0, maxAmplitude) {
     return (
-      (this.maxAmplitude - y / 4) *
+      (maxAmplitude - y / 4) *
       Math.sin(
         ((2 * Math.PI) / this.waveLength) * y -
           ((2 * Math.PI) / this.period) * this.time +
