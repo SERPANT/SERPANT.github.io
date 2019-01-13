@@ -15,9 +15,14 @@ class SinTree {
     this.period = 80;
     this.zPosition = 0;
     this.waveLength = 150;
-    this.offsetY = 50;
+    this.offsetY = 190;
     this.maxAmplitude = 0;
-    this.offsetX = this.canvasWidth / 2;
+    this.offsetX = this.canvasWidth / 4 - 8;
+
+    this.smokeWidth = 9;
+
+    this.person = new Image();
+    this.person.src = "./images/person.png";
   }
 
   run() {
@@ -46,11 +51,16 @@ class SinTree {
    */
   render() {
     this.context.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
+    this.drawPerson();
     this.drawWave(this.sinGetX.bind(this), "rgba(211, 211, 211");
     this.drawWave(this.sinGetX.bind(this), "rgba(211, 211, 211", 10);
     this.drawWave(this.sinGetX.bind(this), "rgba(211, 211, 211", 5.5);
     this.drawWave(this.sinGetX.bind(this), "rgba(211, 211, 211", 6.5);
-    this.drawWave(this.sinGetX.bind(this), "rgba(200, 200, 200", 7.5);
+    this.drawWave(this.sinGetX.bind(this), "rgba(200, 200, 200", 7.7);
+  }
+
+  drawPerson() {
+    this.context.drawImage(this.person, 0, 310, 400, 418);
   }
 
   /**
@@ -62,13 +72,19 @@ class SinTree {
    */
   drawWave(equationFunction, color, phase = 0) {
     for (let i = this.canvasHeight; i >= 0; i -= 1) {
-      const alphaValue = 0.7 - i / this.canvasHeight;
+      const alphaValue = 0.75 - i / this.canvasHeight;
       if (alphaValue <= 0) continue;
 
       const x = equationFunction(i, phase, this.maxAmplitude);
       this.context.beginPath();
-      this.context.moveTo(x + this.offsetX, i + this.offsetY);
-      this.context.lineTo(x + 3 + this.offsetX, i + 2 + this.offsetY);
+      this.context.moveTo(
+        x + this.offsetX,
+        this.canvasHeight - (i + this.offsetY)
+      );
+      this.context.lineTo(
+        x + this.smokeWidth + this.offsetX,
+        this.canvasHeight - (i + this.smokeWidth + this.offsetY)
+      );
       this.context.strokeStyle = color + `,${alphaValue})`;
       this.context.stroke();
     }
@@ -80,10 +96,21 @@ class SinTree {
    * @param {number} x
    */
   sinGetX(y, phase = 0, maxAmplitude) {
+    //smoke
+    // return (
+    //   (maxAmplitude - y / 4) *
+    //   Math.sin(
+    //     ((2 * Math.PI) / this.waveLength) * y -
+    //       ((2 * Math.PI) / this.period) * this.time +
+    //       phase
+    //   )
+    // );
+
+    //twister
     return (
       (maxAmplitude - y / 4) *
       Math.sin(
-        ((2 * Math.PI) / this.waveLength) * y -
+        ((2 * Math.PI) / this.waveLength + (100 - y)) * y -
           ((2 * Math.PI) / this.period) * this.time +
           phase
       )
