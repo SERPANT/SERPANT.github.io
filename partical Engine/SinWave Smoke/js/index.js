@@ -97,24 +97,24 @@ class SinTree {
    */
   sinGetX(y, phase = 0, maxAmplitude) {
     //smoke
-    // return (
-    //   (maxAmplitude - y / 4) *
-    //   Math.sin(
-    //     ((2 * Math.PI) / this.waveLength) * y -
-    //       ((2 * Math.PI) / this.period) * this.time +
-    //       phase
-    //   )
-    // );
-
-    //twister
     return (
       (maxAmplitude - y / 4) *
       Math.sin(
-        ((2 * Math.PI) / this.waveLength + (100 - y)) * y -
+        ((2 * Math.PI) / this.waveLength) * y -
           ((2 * Math.PI) / this.period) * this.time +
           phase
       )
     );
+
+    // //twister
+    // return (
+    //   (maxAmplitude - y / 4) *
+    //   Math.sin(
+    //     ((2 * Math.PI) / this.waveLength + (100 - y)) * y -
+    //       ((2 * Math.PI) / this.period) * this.time +
+    //       phase
+    //   )
+    // );
   }
 }
 
