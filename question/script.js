@@ -218,4 +218,10 @@ yesButton.addEventListener('click', () => {
   console.log('click');
   startCelebration();
   button.hidden = true;
+
+  anime({
+    targets: '#yes',
+    translateX: 200,
+    easing: 'easeOutElastic(1, .5)',
+  }).play();
 });
