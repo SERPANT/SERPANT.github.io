@@ -34,15 +34,6 @@ body {
   left: 60%;
 }
 
-#no:hover {
-  background-image: linear-gradient(
-    to right,
-    #553b31 0%,
-    #da4426 51%,
-    #553931 100%
-  );
-}
-
 #yes {
   cursor: pointer;
   position: absolute;
