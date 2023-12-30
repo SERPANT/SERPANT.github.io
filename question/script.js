@@ -1,11 +1,21 @@
 const button = document.getElementById('no');
 const yesButton = document.getElementById('yes');
+const questionText = document.getElementById('question');
 
 let stopButtonAnimation = false;
 
+const now = new Date();
+
+const expire = new Date('2024-01-01T12:00:00');
+
+if (now.getTime() > expire.getTime()) {
+  button.hidden = true;
+  yesButton.hidden = true;
+  questionText.hidden = true;
+}
+
 ['mouseover', 'click'].forEach(function (type) {
   button.addEventListener(type, function (e) {
-    console.log({ stopButtonAnimation });
     if (!stopButtonAnimation) {
       const top = getRandomNum(window.innerHeight - this.offsetHeight);
       const left = getRandomNum(window.innerWidth - this.offsetWidth - 30);
@@ -21,6 +31,14 @@ let stopButtonAnimation = false;
 
     if (quote) {
       button.innerHTML = `(No) ${quote}`;
+
+      button.addEventListener('click', () => {
+        questionText.innerHTML = 'BOOO!!!! la bye';
+        questionText;
+
+        button.hidden = true;
+        yesButton.hidden = true;
+      });
     } else {
       stopButtonAnimation = true;
       button.innerHTML = '(No) Fine you win... click me';
@@ -215,7 +233,6 @@ setTimeout(() => {
 }, 1000);
 
 yesButton.addEventListener('click', () => {
-  console.log('click');
   startCelebration();
   button.hidden = true;
 
