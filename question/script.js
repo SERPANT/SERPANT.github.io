@@ -32,16 +32,18 @@ if (now.getTime() > expire.getTime()) {
     if (quote) {
       button.innerHTML = `(No) ${quote}`;
 
-      button.addEventListener('click', () => {
+      
+    } else {
+      stopButtonAnimation = true;
+      button.innerHTML = '(No) Fine you win... click '
+        
+        button.addEventListener('click', () => {
         questionText.innerHTML = 'BOOO!!!! la bye';
         questionText;
 
         button.hidden = true;
         yesButton.hidden = true;
       });
-    } else {
-      stopButtonAnimation = true;
-      button.innerHTML = '(No) Fine you win... click me';
     }
   });
 });
