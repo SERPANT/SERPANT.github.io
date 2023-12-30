@@ -34,6 +34,15 @@ body {
   left: 60%;
 }
 
+#no:hover {
+  background-image: linear-gradient(
+    to right,
+    #553b31 0%,
+    #da4426 51%,
+    #553931 100%
+  );
+}
+
 #yes {
   cursor: pointer;
   position: absolute;
@@ -57,6 +66,15 @@ body {
   font-size: 20px;
   text-align: center;
   text-transform: uppercase;
+}
+
+#yes:hover {
+  background-image: linear-gradient(
+    to right,
+    #31553b 0%,
+    #26da29 51%,
+    #31553c 100%
+  );
 }
 
 #question {
