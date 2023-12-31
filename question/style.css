@@ -89,3 +89,15 @@ body {
   text-align: center;
   color: black;
 }
+
+@media (max-width: 400px) {
+  #no {
+    display: none;
+  }
+  #yes {
+    display: none;
+  }
+  #question {
+    display: none;
+  }
+}
