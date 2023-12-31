@@ -7,8 +7,8 @@
 html {
   /* background: url(./images/bg.jpg); */
   background: linear-gradient(
-      rgba(255, 255, 255, 0.5),
-      rgba(255, 255, 255, 0.5)
+      rgba(255, 255, 255, 0.066),
+      rgba(91, 55, 55, 0.521)
     ),
     url(./images/bg.jpg);
   -webkit-background-size: cover;
