@@ -4,8 +4,21 @@
   height: 100%;
 }
 
+html {
+  /* background: url(./images/bg.jpg); */
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0.5)
+    ),
+    url(./images/bg.jpg);
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 body {
-  background-color: rgb(31, 31, 31);
+  /* background-color: rgb(31, 31, 31); */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -74,5 +87,5 @@ body {
   left: 28%;
   font-size: 45px;
   text-align: center;
-  color: white;
+  color: black;
 }
