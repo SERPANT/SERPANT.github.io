@@ -6,7 +6,7 @@ let stopButtonAnimation = false;
 
 const now = new Date();
 
-const expire = new Date('2024-01-10T12:00:00');
+const expire = new Date('2026-01-10T12:00:00');
 
 if (now.getTime() > expire.getTime()) {
   button.hidden = true;
